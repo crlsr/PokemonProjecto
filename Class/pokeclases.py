@@ -11,13 +11,14 @@ class Trainer:
 
 #Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
 class Pokemon:
-    def __init__(self, nombre, ps_max, defensa_fisica, defensa_especial, ataque_fisico, ataque_especial, tipos, ataques=None):
+    def __init__(self, nombre, ps_max, defensa_fisica, defensa_especial, ataque_fisico, ataque_especial, velocidad, tipos, ataques=None):
         self.nombre = nombre #nombre dle pokemon
         self.ps_max = ps_max
         #ps_actuales es el que se modifica, nunca modificar ps_max, no tenemos niveles
         self.ps_actuales = ps_max
         self.defena_stats = (defensa_fisica, defensa_especial)
         self.ataque_stats = (ataque_fisico, ataque_especial)
+        self.velocidad = velocidad
         self.tipos = tipos
         if ataques is None:
             ataques = []
