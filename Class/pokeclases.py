@@ -1,72 +1,173 @@
 '''
 Este modulo esta dedicado a la creación de las clases mediante las cuales se van a estructurar todas las isntancias de nuestro juego
 '''
+# Entrenador, clase que maneja a los pokemon, que maneja a las clases tipo y ataque
 
+class Trainer:
+    def __init__(self, nombre, pokemones, objetos):
+        self.nombre = nombre
+        self.pokemones = pokemones
+        self.objetos = objetos
 
-#Clase padre(Pokemon):
+#Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
 class Pokemon:
-    def __init__(self, nombre, vida , defensa, tipo, ataques = [], batallas_ganadas = 0, ps_max = 100):
+    def __init__(self, nombre, ps_max, defensa_fisica, defensa_especial, ataque_fisico, ataque_especial, tipos, ataques=None):
         self.nombre = nombre #nombre dle pokemon
-        self.stats = tuple([vida, defensa]) #stats del pokemon.
-        self.tipo = tipo
-        self.ataques = ataques
-        self.batallas_ganadas = batallas_ganadas
         self.ps_max = ps_max
+        #ps_actuales es el que se modifica, nunca modificar ps_max, no tenemos niveles
+        self.ps_actuales = ps_max
+        self.defena_stats = (defensa_fisica, defensa_especial)
+        self.ataque_stats = (ataque_fisico, ataque_especial)
+        self.tipos = tipos
+        if ataques is None:
+            ataques = []
+        self.ataques = ataques
+        self.batallas_ganadas = 0
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.tipo}'
     def __str__(self): #Representación del objeto pokemon al imprimirlo. Retorna un str
         return f'{self.name}'
 
+#Ataque
+    
+class Ataque:
+    def __init__(self, name, type, damage, damage_type):
+        self.name = name
+        self.type = type
+        self.damage = damage
+        self.damage_type = damage_type
+
+    def get_type(self):
+        return self.type
+
+    def get_damage(self):
+        return self.damage
+    
+    def get_attack_type(self):
+        return self.damage_type
+    
+    def show(self):
+        return "{}, Tipo: {}, Daño: {}, {}".format(self.name, self.type, self.damage, self.damage_type)
+
 #Tipos:
 
-class Agua:
-    def show(self) -> str:
-        return 'Agua'
+class Normal:
+    Resistencia = []
+    Inmunidades = ["Fantasma"]
+    Debilidades = ["Lucha"]
 
-class Fuego:
     def show(self) -> str:
-        return 'Fuego'
-
-class Planta:
-    def show(self) -> str:
-        return 'Planta'
-
-class Electrico:
-    def show(self) -> str:
-        return 'Electrico'
-
-class Psiquico:
-    def show(self) -> str:
-        return 'Psiquico'
-
-class Siniestro:
-    def show(self) -> str:
-        return 'Siniestro'
-
-class Fantasma:
-    def show(self) -> str:
-        return 'Fantasma'
+        return 'Normal'
 
 class Lucha:
+    Resistencia = ["Roca", "Bicho", "Siniestro"]
+    Inmunidades = []
+    Debilidades = ["Volador", "Psiquico"]
     def show(self) -> str:
         return 'Lucha'
 
-class Vuelo:
+class Volador:
+    Resistencia = ["Lucha", "Bicho", "Planta"]
+    Inmunidades = ["Tierra"]
+    Debilidades = ["Roca", "Electrico", "Hielo"]
     def show(self) -> str:
-        return 'Vuelo'
+        return 'Volador'
+
+class Veneno:
+    Resistencia = ["Lucha", "Veneno", "Bicho", "Planta"]
+    Inmunidades = []
+    Debilidades = ["Tierra", "Psiquico"]
+    def show(self) -> str:
+        return 'Veneno'
+
+class Tierra:
+    Resistencia = ["Veneno", "Roca"]
+    Inmunidades = ["Electrico"]
+    Debilidades = ["Agua", "Planta", "Hielo"]
+    def show(self) -> str:
+        return 'Tierra'
 
 class Roca:
+    Resistencia = ["Normal", "Volador", "Veneno", "Fuego"]
+    Inmunidades = []
+    Debilidades = ["Lucha", "Tierra", "Acero", "Agua", "Planta"]
     def show(self) -> str:
         return 'Roca'
 
 class Bicho:
+    Resistencia = ["Lucha", "Tierra", "Planta"]
+    Inmunidades = []
+    Debilidades = ["Volador", "Roca", "Fuego"]
     def show(self) -> str:
         return 'Bicho'
 
-class Normal:
+class Fantasma:
+    Resistencia = ["Veneno", "Bicho"]
+    Inmunidades = ["Normal", "Lucha"]
+    Debilidades = ["Fantasma", "Siniestro"]
     def show(self) -> str:
-        return 'Normal'
+        return 'Fantasma'
 
+class Acero:
+    Resistencia = ["Normal", "Volador", "Roca", "Bicho", "Acero", "Planta", "Psiquico", "Hielo", "Dragon"]
+    Inmunidades = ["Veneno"]
+    Debilidades = ["Lucha", "Tierra", "Fuego"]
+    def show(self) -> str:
+        return 'Acero'
 
+class Fuego:
+    Resistencia = ["Bicho", "Acero", "Fuego", "Planta"]
+    Inmunidades = []
+    Debilidades = ["Tierra", "Roca", "Agua"]
+    def show(self) -> str:
+        return 'Fuego'
 
+class Agua:
+    Resistencia = ["Acero", "Fuego", "Agua", "Hielo"]
+    Inmunidades = []
+    Debilidades = ["Planta", "Electrico"]
+    def show(self) -> str:
+        return 'Agua'
+
+class Planta:
+    Resistencia = ["Tierra", "Agua", "Planta", "Electrico"]
+    Inmunidades = []
+    Debilidades = ["Volador", "Veneno", "Bicho", "Fuego", "Hielo"]
+    def show(self) -> str:
+        return 'Planta'
+
+class Electrico:
+    Resistencia = ["Volador", "Acero", "Electrico"]
+    Inmunidades = []
+    Debilidades = ["Tierra"]
+    def show(self) -> str:
+        return 'Electrico'
+
+class Psiquico:
+    Resistencia = ["Lucha", "Psiquico"]
+    Inmunidades = []
+    Debilidades = ["Bicho", "Fantasma", "Siniestro"]
+    def show(self) -> str:
+        return 'Psiquico'
+
+class Hielo:
+    Resistencia = ["Hielo"]
+    Inmunidades = []
+    Debilidades = ["Lucha", "Roca", "Acero", "Fuego"]
+    def show(self) -> str:
+        return 'Hielo'
+
+class Dragon:
+    Resistencia = ["Fuego", "Agua", "Planta", "Electrico"]
+    Inmunidades = []
+    Debilidades = ["Hielo", "Dragon"]
+    def show(self) -> str:
+        return 'Dragon'
+
+class Siniestro:
+    Resistencia = ["Fantasma", "Siniestro"]
+    Inmunidades = ["Psiquico"]
+    Debilidades = ["Lucha", "Bicho"]
+    def show(self) -> str:
+        return 'Siniestro'
 

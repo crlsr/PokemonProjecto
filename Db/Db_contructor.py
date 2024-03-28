@@ -9,7 +9,7 @@ sys.path.append(principal_dir)
 
 
 #Importamso las clases para poder utilizarlas durante la contrucción de la base de datos.
-from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Vuelo, Bicho, Roca, Normal
+from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal
 
 
 #Array donde se guardan los pokemons
@@ -47,7 +47,7 @@ def poke_constr(pokemons):
             x = Pokemon(name, 100, 100, Lucha)
             pokemons.append(x)
         elif i>=40 and i<45: #Pokemons tipo Vuelo
-            x = Pokemon(name, 100, 100, Vuelo)
+            x = Pokemon(name, 100, 100, Volador)
             pokemons.append(x)
         elif i>=45 and i<50: #Pokemons tipo Bicho
             x = Pokemon(name, 100, 100, Bicho)
