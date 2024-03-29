@@ -28,4 +28,4 @@ def int_validatión(string):
 
 
 #Combinación que permite verificar un valor y a la vez validarlo entre un conjunto numerico definido.
-x = validation(int_validatión(''), 1, 2) 
+#x = validation(int_validatión(''), 1, 2) 
