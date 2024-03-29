@@ -28,5 +28,12 @@ class PokeRutas:
 
 #Clase para pueblos
 class PokePueblos:
-    pass
-            
+    def __init__(self, name, gym, dialoge):
+        self.name = name
+        self.gym: object = gym
+        self.dialoge = dialoge
+    def menu_pub():
+        pass    
+    
+    def gym_try(self):
+        pass
