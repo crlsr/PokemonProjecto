@@ -1,12 +1,19 @@
 '''
-Este modulo esta dedicado a la creación de las clases mediante las cuales se van a estructurar todas las isntancias de nuestro juego
+Este modulo esta dedicado a la creación de las clases mediante las cuales se van a estructurar todas las instancias para los pokemones de nuestro juego
+-> Creación de pokemones
+-> Creación de Ataques
+-> Creación de enemigos
 '''
 # Entrenador, clase que maneja a los pokemon, que maneja a las clases tipo y ataque
 
 class Trainer:
-    def __init__(self, nombre, pokemones, objetos):
+    def __init__(self, nombre, pokemones = None, objetos = None):
         self.nombre = nombre
+        if pokemones is None:
+            pokemones = []
         self.pokemones = pokemones
+        if objetos is None:
+            objetos = []
         self.objetos = objetos
 
 #Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
@@ -27,7 +34,7 @@ class Pokemon:
         self.ataques = ataques
         self.batallas_ganadas = 0
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
-        return f'{self.tipo}'
+        return f'{self.name}'
     def __str__(self): #Representación del objeto pokemon al imprimirlo. Retorna un str
         return f'{self.name}'
 
@@ -53,8 +60,14 @@ class Ataque:
     def get_attack_type(self):
         return self.damage_type
     
+    def get_name(self):
+        return f'{self.name}'
+    
     def show(self):
-        return "{}, Tipo: {}, Daño: {}, {}".format(self.name, self.type, self.damage, self.damage_type)
+        return "{}, Tipo: {}, Daño: {}, {}".format(self.name, self.type.show(), self.damage, self.damage_type)
+    
+    def __repr__(self) -> str:
+        return f'{self.name}'
 
 #Tipos:
 
