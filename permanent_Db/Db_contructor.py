@@ -123,7 +123,7 @@ def poke_db_structure(pokemons):
 def rut_db_structure(rut):
     with open('Db//db_rutas.txt', 'w', encoding= 'UTF-8') as data:
         for i in rut:
-            data.write(f'{i.entrenador};{i.nro};\n')
+            data.write(f'{i.entrenadores};{i.nro};\n')
             
 #Estructura para los entrnadores:
 def trainer_db_Structure(trainers):
