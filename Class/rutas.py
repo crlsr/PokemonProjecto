@@ -3,9 +3,9 @@ from random import randint
 
 #Clase dedicad aa la creación de rutas
 class PokeRutas:
-    def __init__(self, pokes = [], nro = int):
-        self.pokes = pokes
-        self.nombre = f'Ruta {nro}'
+    def __init__(self, entrenador, nro = int):
+        self.entrenador = entrenador
+        self.nro = nro
     def __repr__(self):
         return f'{self.nombre}'
     
@@ -34,6 +34,17 @@ class PokePueblos:
         self.dialoge = dialoge
     def menu_pub():
         pass    
+
+
+#Clase para gimnasios o liga
+class PokeGym:
+    def __init__(self, color, entrenadores = None):
+        self.color = color
+        if entrenadores is None:
+            entrenadores = []
+        self.entrenadores = entrenadores
+    def menu():
+        pass
     
-    def gym_try(self):
+    def liga():
         pass
