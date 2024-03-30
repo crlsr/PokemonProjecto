@@ -138,8 +138,8 @@ def pub_db_structure(pueblos):
 Ejecución del programa
 '''
 #Ejecución de los constructores de la estructura de datos.
-#atq_constructor(ataques, tipos)
-#atq_db_structure(ataques)
+atq_constructor(ataques, tipos)
+atq_db_structure(ataques)
 poke_constr(pokes, tipos)
 poke_db_structure(pokes)
 rut_constr(rutas)
