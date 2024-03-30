@@ -12,18 +12,20 @@ sys.path.append(principal_dir)
 from funtions.funciones import validation, int_validatión
 
 #Importamso las clases para poder utilizarlas durante la contrucción de la base de datos.
-from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Ataque
+from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque
+Ataque
 from Class.rutas import PokeRutas
 
 
 #Lista de tipos
-tipos = [Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal]
+tipos = [Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Acero, Dragon, Veneno]
 
-#Array donde se guardan los pokemons, los ataques, las rutas, los gimnasios y los pueblos.
+#Array donde se guardan los pokemons, los ataques, las rutas, los gimnasios, los pueblos y los entrenadores.
 pokes = []
 ataques = []
 rutas = []
 pubs = []
+tra = []
 
 '''
 Estas funciones tienen como fin crear los objetos que vamos a mete rne la base de datos (crear nuestra base de datos en caso de que no la tengamos)
@@ -52,20 +54,21 @@ def atq_constructor(atq, tipos):
         os.system('clear')
         print(f'Su ataque {x.get_name()} se agrego exitosamente...')
     print('ATAQUES CREADOS EXITOSAMENTE✅...')
-    return atq
+   
 
 
 #Creación de pokemones (instancias).
 def poke_constr(pokemons, tipos):
     print('SE HA INICIALIZADO EL CREADOR DE POKEMONES💻')
-    elec = validation(int_validatión('Cuantos pokemons quiere poner de cada tipo?\n>>>'), 1, 100)
+    elec = validation(int_validatión('Cuantos pokemons quiere poner de cada tipo?\n>>>'), 1, 20)
     for i in range(len(tipos)*elec):
         name = input(f'Diga el nombre del pokemon nro {i+1}: ')
-        def_fis = validation(int_validatión(f'Cuanta es la defensa física de {name}: '), 1, 100)
-        def_esp = validation(int_validatión(f'Cuanta es la defensa especial de {name}: '), 1, 100)
-        atq_fis = validation(int_validatión(f'Cuanta es el ataque físico de {name}: '), 1, 100)
-        atq_esp = validation(int_validatión(f'Cuanta es el ataque especial de {name}: '), 1, 100)
-        vel = validation(int_validatión(f'Cuanta es la velocidad de {name}: '), 1, 100)
+        ps_max = validation(int_validatión(f'Cuanta es laq vida maxima de {name}: '), 1, 250)
+        def_fis = validation(int_validatión(f'Cuanta es la defensa física de {name}: '), 1, 250)
+        def_esp = validation(int_validatión(f'Cuanta es la defensa especial de {name}: '), 1, 250)
+        atq_fis = validation(int_validatión(f'Cuanto es el ataque físico de {name}: '), 1, 250)
+        atq_esp = validation(int_validatión(f'Cuanto es el ataque especial de {name}: '), 1, 250)
+        vel = validation(int_validatión(f'Cuanta es la velocidad de {name}: '), 1, 250)
         os.system('clear')
         cc = 1
         print('🌀TIPOS🌀'.center(125))
@@ -75,19 +78,21 @@ def poke_constr(pokemons, tipos):
         elec2 = validation(int_validatión('Diga el número del tipo del pokemon: '), 1, len(tipos))
         elec3 = validation(int_validatión('Diga el número del segundo tipo del pokemon (si no tiene, escriba 0): '), 0, len(tipos))
         if elec3 > 0:
-            x = Pokemon(name, 100, def_fis, def_esp, atq_fis, atq_esp, vel, [tipos[elec2], tipos[elec3]])
+            x = Pokemon(name, ps_max, def_fis, def_esp, atq_fis, atq_esp, vel, [tipos[elec2-1], tipos[elec3-1]])
         else:
-            x = Pokemon(name, 100, def_fis, def_esp, atq_fis, atq_esp, vel, [tipos[elec2]])
+            x = Pokemon(name, 100, def_fis, def_esp, atq_fis, atq_esp, vel, [tipos[elec2-1]])
+        pokemons.append(x)
+        os.system('clear')
         print(f'El pokemon {x.nombre} se agrego exitosamente...')
     print('POKEMONES CREADOS EXITOSAMENTE✅...')
-    return pokemons
+
 
 
 #Creador de rutas
 def rut_constr(rutas):
     print('SE HA INICIALIZADO EL CREADOR DE RUTAS💻')
-    for i in range(0):
-        x = PokeRutas([], i+1)
+    for i in range(14):
+        x = PokeRutas(None, i+1)
         rutas.append(x)
     print('RUTAS CREADAS EXITOSAMENTE✅...')
 
@@ -104,24 +109,28 @@ Estas funciones tienen como fin meter la sinstancias que creamso en nuestra base
 '''
 #Estructura de los ataques en la base de datos.
 def atq_db_structure(atq):
-    with open('Db//db_atq', 'w', encoding='UTF-8') as data:
+    with open('Db//db_atq.txt', 'w', encoding='UTF-8') as data:
         for i in atq:
-            data.write(f'{i.name};{i.type.show(i.type)};{i.damage};{i.damage_type}\n')
+            data.write(f'{i.name};{i.type.show()};{i.damage};{i.damage_type};\n')
 
 #Estructura de los pokemons en la base de datos.
 def poke_db_structure(pokemons):
-    with open('Db//db_poke', 'w', encoding='UTF-8') as data:
+    with open('Db//db_poke.txt', 'w', encoding='UTF-8') as data:
         for i in pokemons:
-            data.write(f'{i.nombre};{i.stats};{i.tipo.show(i.tipo)};{i.ataques};{i.batallas_ganadas};{i.ps_max}\n')
+            data.write(f'{i.nombre};{i.ps_max};{i.ps_actuales};{i.defena_stats};{i.ataque_stats};{i.velocidad};{i.get_types()};{i.ataques};{i.batallas_ganadas};\n')
    
 #Estructura de las rutas en la base de datos.
 def rut_db_structure(rut):
-    with open('Db//db_rutas', 'w', encoding= 'UTF-8') as data:
+    with open('Db//db_rutas.txt', 'w', encoding= 'UTF-8') as data:
         for i in rut:
-            data.write(f'{i.pokes};{i.nro}\n')
+            data.write(f'{i.entrenador};{i.nro};\n')
+            
+#Estructura para los entrnadores:
+def trainer_db_Structure(trainers):
+    pass
 
 #Estructura de los pueblos en la base de datos.
-def pub_db_structure():
+def pub_db_structure(pueblos):
     pass
 
 
@@ -137,6 +146,7 @@ rut_constr(rutas)
 rut_db_structure(rutas)
 #pub_constr(pubs)
 #pub_db_structure(pubs)
+
 
 
 
