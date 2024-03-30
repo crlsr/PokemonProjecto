@@ -18,7 +18,7 @@ class Trainer:
 
 #Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
 class Pokemon:
-    def __init__(self, nombre, ps_max, defensa_fisica= None, defensa_especial = None, ataque_fisico = None, ataque_especial = None, velocidad = None, tipos = None, ataques=None):
+    def __init__(self, nombre, ps_max, defensa_fisica= None, defensa_especial = None, ataque_fisico = None, ataque_especial = None, velocidad = None, tipos = None, ataques=None, batallas_ganadas = None):
         self.nombre = nombre #nombre dle pokemon
         self.ps_max = ps_max
         #ps_actuales es el que se modifica, nunca modificar ps_max, no tenemos niveles
@@ -32,9 +32,22 @@ class Pokemon:
         if ataques is None:
             ataques = []
         self.ataques = ataques
-        self.batallas_ganadas = 0
+        if batallas_ganadas is None:
+            batallas_ganadas = 0
+        self.batallas_ganadas = batallas_ganadas
+        
+    def get_types(self):
+        array = []
+        for i in self.tipos:
+            array.append(i.show(i))
+        return array
+    
+    def load_ps(self, ps):
+        self.ps_actuales = ps
+        
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.name}'
+    
     def __str__(self): #Representación del objeto pokemon al imprimirlo. Retorna un str
         return f'{self.name}'
 
@@ -52,8 +65,8 @@ class Ataque:
         self.damage_type = damage_type
 
     def get_type(self):
-        return self.type
-
+        return f'{self.type}'
+    
     def get_damage(self):
         return self.damage
     
@@ -78,6 +91,7 @@ class Normal:
 
     def show(self) -> str:
         return 'Normal'
+    
 
 class Lucha:
     Resistencia = ["Roca", "Bicho", "Siniestro"]
@@ -85,6 +99,7 @@ class Lucha:
     Debilidades = ["Volador", "Psiquico"]
     def show(self) -> str:
         return 'Lucha'
+    
 
 class Volador:
     Resistencia = ["Lucha", "Bicho", "Planta"]
@@ -92,6 +107,7 @@ class Volador:
     Debilidades = ["Roca", "Electrico", "Hielo"]
     def show(self) -> str:
         return 'Volador'
+    
 
 class Veneno:
     Resistencia = ["Lucha", "Veneno", "Bicho", "Planta"]
@@ -99,6 +115,7 @@ class Veneno:
     Debilidades = ["Tierra", "Psiquico"]
     def show(self) -> str:
         return 'Veneno'
+    
 
 class Tierra:
     Resistencia = ["Veneno", "Roca"]
@@ -106,6 +123,7 @@ class Tierra:
     Debilidades = ["Agua", "Planta", "Hielo"]
     def show(self) -> str:
         return 'Tierra'
+    
 
 class Roca:
     Resistencia = ["Normal", "Volador", "Veneno", "Fuego"]
@@ -113,6 +131,7 @@ class Roca:
     Debilidades = ["Lucha", "Tierra", "Acero", "Agua", "Planta"]
     def show(self) -> str:
         return 'Roca'
+    
 
 class Bicho:
     Resistencia = ["Lucha", "Tierra", "Planta"]
@@ -120,6 +139,7 @@ class Bicho:
     Debilidades = ["Volador", "Roca", "Fuego"]
     def show(self) -> str:
         return 'Bicho'
+    
 
 class Fantasma:
     Resistencia = ["Veneno", "Bicho"]
@@ -127,6 +147,7 @@ class Fantasma:
     Debilidades = ["Fantasma", "Siniestro"]
     def show(self) -> str:
         return 'Fantasma'
+    
 
 class Acero:
     Resistencia = ["Normal", "Volador", "Roca", "Bicho", "Acero", "Planta", "Psiquico", "Hielo", "Dragon"]
@@ -135,12 +156,14 @@ class Acero:
     def show(self) -> str:
         return 'Acero'
 
+
 class Fuego:
     Resistencia = ["Bicho", "Acero", "Fuego", "Planta"]
     Inmunidades = []
     Debilidades = ["Tierra", "Roca", "Agua"]
     def show(self) -> str:
         return 'Fuego'
+    
 
 class Agua:
     Resistencia = ["Acero", "Fuego", "Agua", "Hielo"]
@@ -148,13 +171,14 @@ class Agua:
     Debilidades = ["Planta", "Electrico"]
     def show(self) -> str:
         return 'Agua'
-
+    
 class Planta:
     Resistencia = ["Tierra", "Agua", "Planta", "Electrico"]
     Inmunidades = []
     Debilidades = ["Volador", "Veneno", "Bicho", "Fuego", "Hielo"]
     def show(self) -> str:
         return 'Planta'
+    
 
 class Electrico:
     Resistencia = ["Volador", "Acero", "Electrico"]
@@ -162,6 +186,7 @@ class Electrico:
     Debilidades = ["Tierra"]
     def show(self) -> str:
         return 'Electrico'
+    
 
 class Psiquico:
     Resistencia = ["Lucha", "Psiquico"]
@@ -169,6 +194,7 @@ class Psiquico:
     Debilidades = ["Bicho", "Fantasma", "Siniestro"]
     def show(self) -> str:
         return 'Psiquico'
+   
 
 class Hielo:
     Resistencia = ["Hielo"]
@@ -176,6 +202,7 @@ class Hielo:
     Debilidades = ["Lucha", "Roca", "Acero", "Fuego"]
     def show(self) -> str:
         return 'Hielo'
+    
 
 class Dragon:
     Resistencia = ["Fuego", "Agua", "Planta", "Electrico"]
@@ -183,6 +210,7 @@ class Dragon:
     Debilidades = ["Hielo", "Dragon"]
     def show(self) -> str:
         return 'Dragon'
+    
 
 class Siniestro:
     Resistencia = ["Fantasma", "Siniestro"]
@@ -190,4 +218,5 @@ class Siniestro:
     Debilidades = ["Lucha", "Bicho"]
     def show(self) -> str:
         return 'Siniestro'
+    
 
