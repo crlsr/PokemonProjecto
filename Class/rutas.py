@@ -3,8 +3,10 @@ from random import randint
 
 #Clase dedicad aa la creación de rutas
 class PokeRutas:
-    def __init__(self, entrenador, nro = int):
-        self.entrenador = entrenador
+    def __init__(self, entrenadores = None, nro = int):
+        if entrenadores is None:
+            entrenadores = []
+        self.entrenadores = entrenadores
         self.nro = nro
     def __repr__(self):
         return f'{self.nombre}'
