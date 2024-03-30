@@ -60,7 +60,7 @@ def poke_constr(pokemons, tipos):
     print('SE HA INICIALIZADO EL CREADOR DE POKEMONES💻')
     elec = validation(int_validatión('Cuantos pokemons quiere poner de cada tipo?\n>>>'), 1, 100)
     for i in range(len(tipos)*elec):
-        name = input(f'Diga el nombre del pokemon nro {i}: ')
+        name = input(f'Diga el nombre del pokemon nro {i+1}: ')
         def_fis = validation(int_validatión(f'Cuanta es la defensa física de {name}: '), 1, 100)
         def_esp = validation(int_validatión(f'Cuanta es la defensa especial de {name}: '), 1, 100)
         atq_fis = validation(int_validatión(f'Cuanta es el ataque físico de {name}: '), 1, 100)
@@ -70,7 +70,8 @@ def poke_constr(pokemons, tipos):
         cc = 1
         print('🌀TIPOS🌀'.center(125))
         for i in tipos:
-            print(f'{cc}. {i}')
+            print(f'{cc}. {i.show(i)}')
+            cc+=1
         elec2 = validation(int_validatión('Diga el número del tipo del pokemon: '), 1, len(tipos))
         elec3 = validation(int_validatión('Diga el número del segundo tipo del pokemon (si no tiene, escriba 0): '), 0, len(tipos))
         if elec3 > 0:
