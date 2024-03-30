@@ -63,7 +63,7 @@ def poke_constr(pokemons, tipos):
     elec = validation(int_validatión('Cuantos pokemons quiere poner de cada tipo?\n>>>'), 1, 20)
     for i in range(len(tipos)*elec):
         name = input(f'Diga el nombre del pokemon nro {i+1}: ')
-        ps_max = validation(int_validatión(f'Cuanta es laq vida maxima de {name}: '), 1, 250)
+        ps_max = validation(int_validatión(f'Cuanta es la vida maxima de {name}: '), 1, 250)
         def_fis = validation(int_validatión(f'Cuanta es la defensa física de {name}: '), 1, 250)
         def_esp = validation(int_validatión(f'Cuanta es la defensa especial de {name}: '), 1, 250)
         atq_fis = validation(int_validatión(f'Cuanto es el ataque físico de {name}: '), 1, 250)
@@ -144,8 +144,8 @@ poke_constr(pokes, tipos)
 poke_db_structure(pokes)
 rut_constr(rutas)
 rut_db_structure(rutas)
-#pub_constr(pubs)
-#pub_db_structure(pubs)
+pub_constr(pubs)
+pub_db_structure(pubs)
 
 
 
