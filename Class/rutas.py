@@ -13,6 +13,8 @@ principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
 
+from Combate import Pokemon_Combat
+from pokeclases import Objeto
 from funtions.funciones import validation, int_validatión
 from random import randint
 import os
@@ -29,11 +31,11 @@ class PokeRutas:
     
     def menu_ruta(self, user, zonas, posicion):
         while True:
-            num = randint(0, len(self.pokes))-1
+            num = randint(0, len(self.entrenadores))-1
             if num == -1:
                 print('No hay batalla')
             else:
-                print(f'Hay batalla con {num}')
+                Pokemon_Combat(user, self.entrenadores[num])
             elec = validation(int_validatión(f'>1. Avanzar a {zonas[posicion+1]}\n>2. Retroceder a {zonas[posicion-1]}\n>3. Salir de Pokemon\n>>>'))
             if elec == 1:
                 return posicion+1
@@ -51,55 +53,56 @@ class PokePueblos:
         self.gym: object = gym
         self.medcenter: object = medcenter
         self.pokeshop: object = pokeshop
-    def show(self):
-        if self.color == 'Naranja':
+    def show(self): #Historia del pueblo
+        if self.name == 'Naranja':
             pass
-        elif self.color == 'Azul':
+        elif self.name == 'Azul':
             pass
-        elif self.color == 'Rojo':
+        elif self.name == 'Rojo':
             pass
-        elif self.color == 'Negro':
+        elif self.name == 'Negro':
             pass
-        elif self.color == 'Fuxia':
+        elif self.name == 'Fuxia':
             pass
-        else:
+        elif self.name == 'Liga_Pokemon':
             pass
-    def menu_pub(self):
+    def menu_pub(self, user, posicion):
         while True:
-            elec = validation(int_validatión('>1. Ver la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Salir\n>>>'), 1, 5)
+            elec = validation(int_validatión('>1. Preguntarle a tu compañero por la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Retroceder Ruta\n>6. Avanzar Ruta\n>7. Salir\n>>>'), 1, 7)
             os.system('clear') 
             if elec == 1:
                 self.show()
             elif elec == 2:
-                pass
+                self.medcenter.menu(self.medcenter)
             elif elec == 3:
-                pass
+                self.pokeshop.menu(self.pokeshop)
             elif elec == 4:
-                pass
+                boolean = self.gym.menu(self.gym)
+                if boolean == False:
+                    for i in user.pokemons:
+                        i.ps_actuales = i.ps_max
+                    print('Listo, sus pokemones se han recuperado exitosamente...💪🏻')
+            elif elec == 5:
+                return posicion-1
+            elif elec == 6:
+                return posicion+1
             else:
-                break
+                posicion = -1
+                return posicion
     def __repr__(self):
         return f'{self.name}'
 
 
 #Clase para tienda pokemon
 class PokeShop:
-    def __init__(self, pueblo, curaciones = None, defensas = None, ataques = None):
+    def __init__(self, pueblo, curaciones = None):
         self.pueblo = pueblo
         if curaciones is None:
             curaciones = []
         self.curaciones = curaciones
-        if defensas is None:
-            defensas = []
-        self.defensas = defensas
-        if ataques is None:
-            ataques = []
-        self.ataques = ataques
         
-    def menu(self, user, curacion, defensa, ataque):
-        self.curaciones.append(curacion)
-        self.defensas.append(defensa)
-        self.ataques.append(ataque)
+    def menu(self, user, curacion):
+        self.curaciones.append(Objeto('Poción de curación', 45, 1, 1))
         while True:
             elec = validation(int_validatión('Que deseas comprar?\n>1. Curación: 1200\n>2. Posción de defensa: 900\n>3. Poción de ataque: 1000\n>4. Salir\n>>>'), 1, 4)
             os.system('clear')
@@ -109,28 +112,6 @@ class PokeShop:
                         user.pokecoins -= self.curaciones[0].price
                         user.objects.append(self.curaciones[0])
                         del self.curaciones[0]
-                    else:
-                        print('Saldo insuficiente...👎🏻')
-                else:
-                    print('Objeto acabado')
-            
-            elif elec == 2:
-                if defensa in self.defensas:
-                    if user.pokecoins > self.defensas[0].price:
-                        user.pokecoins -= self.defesas[0].price
-                        user.objects.append(self.defensas[0])
-                        del self.defensas[0]
-                    else:
-                        print('Saldo insuficiente...👎🏻')
-                else:
-                    print('Objeto acabado')
-                    
-            elif elec == 3:
-                if ataque in self.ataques:
-                    if user.pokecoins > self.ataques[0].price:
-                        user.pokecoins -= self.ataques[0].price
-                        user.objects.append(self.ataques[0])
-                        del self.ataques[0]
                     else:
                         print('Saldo insuficiente...👎🏻')
                 else:
@@ -166,12 +147,22 @@ class PokeGym:
             entrenadores = []
         self.entrenadores = entrenadores
         
-    def menu(self):
+    def menu(self, user, pueblo):
         while True:
             elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
             os.system('clear') 
             if elec == 1:
-                pass 
+                if len(self.entrenadores) > 0:
+                    boolean = Pokemon_Combat(user, self.entrenadores[0])
+                    if boolean == True:
+                        del self.entrenadores
+                        print('Entrenador derrotad, haz ganado 1200 Pokemonedas')
+                        user.pokecoins += 1200
+                        if len(self.entrenadores) == 0:
+                            user.gimnasios.append(self.pueblo)
+                    else:
+                        print('Será llevado al centro Pokemon de la ciudad')
+                        return boolean
             else:
                 break   
         

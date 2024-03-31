@@ -239,8 +239,6 @@ atq_randomizer(array, array2)
 poke_random(array3, array)
 poke_liga(array3, array)
 
-print(type(array[0].ataques[1]))
-Pokemon_Combat(Pokeusuario('ffgbh', 'hbfbhd', 'bfdhbhd', [array[0]]), array3[5].gym.entrenadores[3])
 
 
 
