@@ -1,6 +1,6 @@
 #ARCHIVO DE DIALOGOS (COPY & PASTE EN EL PROGRAMA)
 
-#PUEBLO NARANJA
+
 
 print("En una tierra bastante lejana, está la tierra de textemon. Un mundo donde vagaban monstruos basados\n"
       "​​en texto, un mundo donde vagaban monstruos basados ​​en texto\n"
