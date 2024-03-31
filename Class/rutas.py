@@ -14,7 +14,7 @@ sys.path.append(principal_dir)
 
 
 from Combate import Pokemon_Combat
-from pokeclases import Objeto
+from Class.pokeclases import Objeto
 from funtions.funciones import validation, int_validatión
 from random import randint
 import os

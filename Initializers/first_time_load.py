@@ -147,6 +147,8 @@ def atq_randomizer(pokemons, ataques):
                     pokemon.ataques.append(i)
                 else:
                     continue
+        if len(pokemon.ataques) == 0:
+            pokemon.default_fix()
                 
 #Función para meter a cada entrenador en su pueblo
 def trainer_pub(trainer, pueblos):
@@ -239,6 +241,8 @@ atq_randomizer(array, array2)
 poke_random(array3, array)
 poke_liga(array3, array)
 
+for i in array:
+    print(i.ataques)
 
 
 

@@ -105,6 +105,9 @@ class Pokemon:
     
     def get_name(self):
         return self.nombre
+    
+    def default_fix(self):
+        self.ataques.append(Ataque('Placaje', Normal, 40, 'Fisico'))
 
     def get_types(self):
         array = []
