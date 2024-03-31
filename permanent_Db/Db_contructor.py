@@ -284,17 +284,30 @@ def trainer_db_Structure(trainers):
 '''
 Ejecución del programa
 '''
+#Función de la construccion general de las instancias.
+def exe_contructor(ataques, tipos, pokes, rutas, pubs, tra):
+    atq_constructor(ataques, tipos)
+    poke_constr(pokes, tipos)
+    rut_constr(rutas)
+    pub_constr(pubs)
+    trainer_contr(tra, pubs)
+
+#Función de la estrctura general de la base de datos.
+def exe_db_structure(ataques, pokes, rutas, pubs, tra):
+    atq_db_structure(ataques)
+    poke_db_structure(pokes)
+    rut_db_structure(rutas)
+    pub_db_structure(pubs)
+    trainer_db_Structure(tra)
+    
 #Ejecución de los constructores de la estructura de datos.
-#atq_constructor(ataques, tipos)
-#atq_db_structure(ataques)
-#poke_constr(pokes, tipos)
-#poke_db_structure(pokes)
-rut_constr(rutas)
-rut_db_structure(rutas)
-pub_constr(pubs)
-pub_db_structure(pubs)
-trainer_contr(tra, pubs)
-trainer_db_Structure(tra)
+exe_contructor(ataques, tipos, pokes, rutas, pubs, tra)
+exe_db_structure(ataques, pokes, rutas, pubs, tra)
+    
+    
+    
+    
+
 
 
 
