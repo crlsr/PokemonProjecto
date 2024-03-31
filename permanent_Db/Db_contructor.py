@@ -90,7 +90,11 @@ def poke_constr(pokemons, tipos):
 def rut_constr(rutas):
     print('SE HA INICIALIZADO EL CREADOR DE RUTAS💻')
     for i in range(14):
-        x = PokeRutas(None, i+1)
+        array = []
+        for i in range(3):
+            y = input('Diga el nombre del pokemon que desea agregar a la ruta: ')
+            array.append(y)
+        x = PokeRutas(array, i+1)
         rutas.append(x)
     print('RUTAS CREADAS EXITOSAMENTE✅...')
 

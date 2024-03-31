@@ -124,6 +124,19 @@ def pokes_type_asig(pokes, tipos):
                 else:
                     continue
 
+#Función para asignarle cada pokemon a su ruta:
+def rute_pokes_asig(rutas, pokes):
+    for i in rutas:
+        cc = 0
+        for j in i.entrenadores:
+            for poke in pokes:
+                if poke.nombre == j:
+                    i.entrenadores[cc] = Trainer(f'{j} Salvaje', [poke], None, i.nro)
+                    cc += 1
+                else:
+                    continue
+            
+
 #Función para darle ataques aleatorios a los pokemons segun su tipo
 def atq_randomizer(pokemons, ataques):
     for pokemon in pokemons:
@@ -146,21 +159,60 @@ def trainer_pub(trainer, pueblos):
                 
 #Función para darle a cada entrenador un pokemon random
 def poke_random(pueblos, pokemons):
-    for i in pueblos.gym.entrenadores:
-        if i.ubicacion == 'Naranja': #Tipo Normal
-            clase = [poke for poke in pokemons if ('Normal' in poke.tipos)]
-        elif i.ubicacion == 'Azul': #Tipo Agua
-            pass
-        elif i.ubicacion == 'Rojo': #Tipo Fuego
-            pass
-        elif i.ubicacion == 'Negro': #Tipo Fantasma
-            pass
-        elif i.ubicacion == 'Fuxia': #Tipo Siniestro
-            pass
-        elif i.ubicacion == 'Plata': #Tipo Acero
-            pass
-        else:
-            pass
+    for pueblo in pueblos:
+        entrenadores = pueblo.gym.entrenadores
+        for i in entrenadores:
+            if i.ubicacion == 'Naranja': #Tipo Normal
+                clase = [poke for poke in pokemons if (Normal in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<2:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            elif i.ubicacion == 'Azul': #Tipo Agua
+                clase = [poke for poke in pokemons if (Agua in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<3:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            elif i.ubicacion == 'Rojo': #Tipo Fuego
+                clase = [poke for poke in pokemons if (Fuego in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<4:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            elif i.ubicacion == 'Negro': #Tipo Fantasma
+                clase = [poke for poke in pokemons if (Fantasma in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<5:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            elif i.ubicacion == 'Fuxia': #Tipo Siniestro
+                clase = [poke for poke in pokemons if (Siniestro in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<5:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            elif i.ubicacion == 'Plata': #Tipo Acero
+                clase = [poke for poke in pokemons if (Acero in poke.tipos)]
+                for poke in clase:
+                    if randint(1,3) == 1 and len(i.pokemones)<6:
+                        i.pokemones.append(poke)
+                    else:
+                        continue
+            else:
+                continue
+#Esta función tiene como fin darle los pokemonsa los entrenadores de la liga.
+def poke_liga(pueblos, pokemons):
+    liga = pueblos[-1]
+    liga.gym.entrenadores[0].pokemons = [pokemons[6], pokemons[29], pokemons[31], pokemons[41], pokemons[54], pokemons[71]]
+    liga.gym.entrenadores[1].pokemons = [pokemons[22], pokemons[32], pokemons[35], pokemons[43], pokemons[44], pokemons[42]]
+    liga.gym.entrenadores[2].pokemons = [pokemons[62], pokemons[53], pokemons[61], pokemons[70], pokemons[72], pokemons[67]]
+    liga.gym.entrenadores[3].pokemons = [pokemons[74], pokemons[66], pokemons[66], pokemons[11], pokemons[9], pokemons[20]]
         
 
 
@@ -169,21 +221,24 @@ Ejecución del programa
 '''
 array = []
 array2 = []
+arrayr = []
 array3 = []
 array4 = []
 atq_creator(array2)
 poke_creator(array)
+ruta_creator(arrayr)
 pubs_creator(array3)
 trainers_creator(array4)
 
 atq_class_asig(array2, tipos)
 pokes_type_asig(array, tipos)
+rute_pokes_asig(arrayr, array)
 trainer_pub(array4, array3)
 
 atq_randomizer(array, array2)
+poke_random(array3, array)
+poke_liga(array3, array)
 
-atq_randomizer(array, array2)
 
-print(array3[6].gym.entrenadores[0].ubicacion)
 
 
