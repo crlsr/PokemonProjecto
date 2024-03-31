@@ -15,7 +15,6 @@ class Trainer:
         if objetos is None:
             objetos = []
         self.objetos = objetos
-<<<<<<< HEAD
         self.ubicacion = ubicacion
     def get_pokes(self):
         array = []
@@ -26,8 +25,6 @@ class Trainer:
     def obj_num(self):
         return len(self.objetos)
     
-=======
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c
     def get_available_pokemon(self):
         number_of_pokemon = len(self.pokemones)
         for pokemon in self.pokemones:
@@ -323,8 +320,4 @@ class Siniestro(Type):
     Debilidades = ["Lucha", "Bicho"]
     def show(self) -> str:
         return 'Siniestro'
-<<<<<<< HEAD
     
-=======
-    
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c

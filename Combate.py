@@ -32,12 +32,6 @@ def select_player_attack(Pokemon):
         if answer <= len(possible_attacks):
             return possible_attacks[answer-1]
         elif answer == 0:
-<<<<<<< HEAD
-            return 0
-        else:
-            print("Respuesta Invalida")
-
-=======
             return None
         else:
             print("Respuesta Invalida")
@@ -58,7 +52,6 @@ def select_player_item(Trainer):
         else:
             print("Respuesta invalida")
 
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c
 def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
     stab_bonus = get_STAB(Giving_Pokemon, attack.get_type_object())
     crit_bonus = get_crit()
@@ -66,13 +59,9 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
         index = 0
     elif attack.get_attack_type() == "Especial":
         index = 1
-<<<<<<< HEAD
-    attack_stat = Giving_Pokemon.
-=======
     attack_stat = Giving_Pokemon.Get_attack_stat()
     defense_stat = Receiving_Pokemon.Get_defense_stat()
     attack_power = attack.get_damage()
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c
     type_multiplier = 1
     attack_type = attack.get_type_object()
     attack_type_string = attack_type.show()
@@ -80,28 +69,18 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
         type_relation = type.type_multiplier(attack_type_string)
         type_multiplier = type_multiplier*type_relation
     
-<<<<<<< HEAD
-    damage = ()
-    
-    
-=======
     damage = (((20+2)*attack_power*(attack_stat[index]/defense_stat[index]))/50) * stab_bonus * crit_bonus
     return damage
     
+def compare_speed(Player_Pokemon, Enemy_Pokemon):
+    pass
 
-
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c
 def Pokemon_Combat(Player_Trainer, Enemy_Trainer):
     print("Batalla Contra {}".format(Enemy_Trainer.get_name()))
     current_pkmn_user = Player_Trainer.get_next_pokemon()
     current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
     print("Combate versus {}!".format(Enemy_Trainer.get_name()))
     while Player_Trainer.get_available_pokemon() > 0 and Enemy_Trainer.get_available_pokemon() > 0:
-<<<<<<< HEAD
-        while True:
-            print("""""")
-print(get_crit())
-=======
         current_attack = None
         while True:
             print("""1. Usar un ataque
@@ -109,4 +88,6 @@ print(get_crit())
             answer = input("")
             if answer == "1":
                 current_attack = select_player_attack(current_pkmn_user)
->>>>>>> d2ad99897640729a95fd3b7c4d6aead86c20d90c
+                break
+            elif answer == "2":
+                current_item = select_player_item(Player_Trainer)
