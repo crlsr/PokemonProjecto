@@ -6,6 +6,12 @@ Se trataran temas tales como:
 -> Creación de edificaciones complementarias de los pueblos (shop, gym, med)
 ->  Empaquetameinto de estructuras dentro de los pueblos
 '''
+#Usamos script para evitar excepciones de importación circular
+import sys, os
+actual_dir = os.path.dirname(os.path.abspath(__file__))
+principal_dir = os.path.join(actual_dir, '..')
+sys.path.append(principal_dir)
+
 
 from funtions.funciones import validation, int_validatión
 from random import randint
@@ -19,7 +25,7 @@ class PokeRutas:
         self.entrenadores = entrenadores
         self.nro = nro
     def __repr__(self):
-        return f'{self.nombre}'
+        return f'Ruta {self.nro}'
     
     def menu_ruta(self, zonas, posicion):
         while True:
@@ -72,6 +78,8 @@ class PokePueblos:
                 pass
             else:
                 break
+    def __repr__(self):
+        return f'{self.name}'
 
 
 #Clase para tienda pokemon

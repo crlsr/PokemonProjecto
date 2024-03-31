@@ -13,6 +13,7 @@ sys.path.append(principal_dir)
 from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
 from Class.rutas import PokeRutas, PokePueblos, PokeMed, PokeGym, PokeShop
+from Class.user import Pokeusuario
 
 #Creación de ataques
 def atq_creator(ataques):
@@ -30,30 +31,62 @@ def poke_creator(pokes):
         for i in data:
             array = i.split(';')
             del array[-1]
-            df = eval(array[4])
-            at = eval(array[5])
-            tp = eval(array[7])
-            atq = eval(array[8])
-            x = Pokemon(array[0], array[1], df[0], df[1], at[0], at[1], array[6], tp, atq)
+            df = eval(array[3])
+            at = eval(array[4])
+            tp = eval(array[6])
+            atq = eval(array[7])
+            x = Pokemon(array[0], array[1], df[0], df[1], at[0], at[1], array[5], tp, atq)
             pokes.append(x)
-        print(x)
             
 
 #Creación de rutas
 def ruta_creator(rutas):
-    pass
+    with open('Db//db_rutas.txt', 'r', encoding= 'UTF-8') as data:
+        for i in data:
+            array = i.split(';')
+            del array[-1]
+            x = PokeRutas(array[0], array[1])
+            rutas.append(x)
+
 
 #Creación de pueblos
 def pubs_creator(pueblos):
-    pass
-
+    with open('Db//db_pub.txt', 'r', encoding='UTF-8') as data:
+        for i in data:
+            array = i.split(';')
+            del array[-1]
+            if 'pub' in array:
+                x = PokePueblos(array[0], array[1], array[2], array[3])
+            elif 'gym' in array:
+                y = PokeGym(array[0], array[1])
+                x.gym = y
+            elif 'med' in array:
+                y = PokeMed(array[0])
+                x.medcenter = y
+            elif 'shop' in array:
+                y = PokeShop(array[0], array[1], array[2], array[3])
+                x.pokeshop = y
+                pueblos.append(x)
+            
+            
 #Creación de los Entrenadores
 def trainers_creator(trainers):
-    pass
+    with open('Db//db_trainers.txt', 'r', encoding='UTF-8') as data:
+        for i in data:
+            array = i.split(';')
+            del array[-1]
+            pokes = eval(array[1])
+            x = Trainer(array[0], pokes, array[2], array[3])
+            trainers.append(x)
 
 #Creación del Usuario
 def create_user(user):
-    pass
+    print('Bienvenido a Pokemon!💻')
+    name = input('Diga su nombre: ')
+    gender = input('Diga su genero (el que usted desee): ')
+    region = input('Diga su region de origen: : ')
+    user = Pokeusuario(name, gender, region)
+    return user
 
 
 '''
@@ -64,5 +97,6 @@ En este apartado realizamos todos los procesos de empaquetamiento de datos (mete
 '''
 Ejecución del programa
 '''
-poke_creator([])
 
+
+trainers_creator([])

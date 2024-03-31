@@ -44,6 +44,9 @@ class Trainer:
         return None
     def get_objects(self):
         return self.objetos
+    
+    def __repr__(self) -> str:
+        return f'{self.nombre}'
 
 #Objetos, para aumentar la vida, ataque, defensa
     
@@ -144,10 +147,10 @@ class Pokemon:
         self.ps_actuales = self.ps_max
 
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
-        return f'{self.name}'
+        return f'{self.nombre}'
     
     def __str__(self): #Representación del objeto pokemon al imprimirlo. Retorna un str
-        return f'{self.name}'
+        return f'{self.nombre}'
 
 #Ataque
     
