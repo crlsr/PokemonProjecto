@@ -9,3 +9,7 @@ class Pokeusuario(Trainer):
         self.gimnasios = gimnasios
         self.liga = liga
         self.pokecoins = pokecoins
+        self.batallas_ganadas = 0
+
+    def add_win(self):
+        self.batallas_ganadas += 1

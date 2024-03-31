@@ -25,6 +25,10 @@ class Trainer:
     def obj_num(self):
         return len(self.objetos)
     
+
+    def reset_stats_pkmn(self):
+        for pokemon in self.pokemones:
+            pokemon.reset_stats()
     def get_available_pokemon(self):
         number_of_pokemon = len(self.pokemones)
         for pokemon in self.pokemones:
@@ -61,7 +65,7 @@ class Objeto:
 #Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
 class Pokemon:
     def __init__(self, nombre, ps_max, defensa_fisica= None, defensa_especial = None, ataque_fisico = None, ataque_especial = None, velocidad = None, tipos = None, ataques=None, batallas_ganadas = None):
-        self.nombre = nombre #nombre dle pokemon
+        self.nombre = nombre #nombre del pokemon
         self.ps_max = ps_max
         #ps_actuales es el que se modifica, nunca modificar ps_max, no tenemos niveles
         self.ps_actuales = ps_max
@@ -79,7 +83,10 @@ class Pokemon:
         if batallas_ganadas is None:
             batallas_ganadas = 0
         self.batallas_ganadas = batallas_ganadas
-        
+    
+    def get_name(self):
+        return self.nombre
+
     def get_types(self):
         array = []
         for i in self.tipos:
@@ -91,6 +98,9 @@ class Pokemon:
 
     def get_attacks(self):
         return self.ataques
+    
+    def get_speed(self):
+        return self.velocidad
 
     def load_ps(self, ps):
         self.ps_actuales = ps
@@ -114,6 +124,12 @@ class Pokemon:
     
     def Get_defense_stat(self):
         return self.defensa_temp
+    
+    def Get_ps(self):
+        return self.ps_actuales
+    
+    def Get_ps_max(self):
+        return self.ps_max
 
     def reset_stats(self):
         self.ataque_temp = self.ataque_stats
