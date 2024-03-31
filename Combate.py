@@ -29,10 +29,10 @@ def select_player_attack(Pokemon):
             count += 1
         print("0. Para salir")
         answer = int(input(""))
-        if answer <= len(possible_attacks):
-            return possible_attacks[answer-1]
-        elif answer == 0:
+        if answer == 0:
             return None
+        elif answer <= len(possible_attacks):
+            return possible_attacks[answer-1]
         else:
             print("Respuesta Invalida")
 
@@ -45,10 +45,10 @@ def select_player_item(Trainer):
             count += 1
         print("0. para salir")
         answer = int(input(""))
-        if answer <= len(possible_items):
-            return possible_items[answer-1]
-        elif answer == 0:
+        if answer == 0:
             return None
+        elif answer <= len(possible_items):
+            return possible_items[answer-1]
         else:
             print("Respuesta invalida")
 
@@ -124,9 +124,13 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             answer = input("")
             if answer == "1":
                 current_attack = select_player_attack(current_pkmn_user)
+                if current_attack is None:
+                    continue
                 break
             elif answer == "2":
                 current_item = select_player_item(Player_Trainer)
+                if current_item is None:
+                    continue
                 break
             else:
                 print("Valor Inválido")
