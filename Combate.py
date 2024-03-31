@@ -73,6 +73,10 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
         type_multiplier = type_multiplier*type_relation
     if type_multiplier >= 2:
         print("Es super eficaz!")
+    elif type_multiplier > 0 and type_multiplier < 1:
+        print("Es poco eficaz")
+    elif type_multiplier == 0:
+        print("No ha hecho daño! Es inmune")
     
     damage = (((20+2)*attack_power*(attack_stat[index]/defense_stat[index]))/50) * stab_bonus * crit_bonus * type_multiplier
     return int(damage)
