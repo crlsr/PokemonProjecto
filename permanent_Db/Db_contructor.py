@@ -12,9 +12,9 @@ sys.path.append(principal_dir)
 from funtions.funciones import validation, int_validatión
 
 #Importamso las clases para poder utilizarlas durante la contrucción de la base de datos.
-from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque
+from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
-from Class.rutas import PokeRutas
+from Class.rutas import PokeRutas, PokePueblos, PokeMed, PokeGym, PokeShop
 
 
 #Lista de tipos
@@ -87,7 +87,6 @@ def poke_constr(pokemons, tipos):
     print('POKEMONES CREADOS EXITOSAMENTE✅...')
 
 
-
 #Creador de rutas
 def rut_constr(rutas):
     print('SE HA INICIALIZADO EL CREADOR DE RUTAS💻')
@@ -100,8 +99,76 @@ def rut_constr(rutas):
 #Creador de pueblos.
 def pub_constr(pueblos):
     print('SE HA INICIALIZADO EL CREADOR DE PUEBLOS 💻')
+    #Contrucción pueblo Naranja (Tipo Normal)
+    Naranja = PokePueblos('Naranaja', None, None, None)
+    gym = PokeGym(Naranja.name, None)
+    Naranja.gym = gym
+    med = PokeMed(Naranja.name)
+    Naranja.medcenter = med
+    shop = PokeShop(Naranja.name, None, None, None)
+    Naranja.pokeshop = shop
+    pueblos.append(Naranja)
+    
+    #Contrucción pueblo Azul (Tipo Agua)
+    Azul = PokePueblos('Azul', None, None, None)
+    gym = PokeGym(Azul.name, None)
+    Azul.gym = gym
+    med = PokeMed(Azul.name)
+    Azul.medcenter = med
+    shop = PokeShop(Azul.name, None, None, None)
+    Azul.pokeshop = shop
+    pueblos.append(Azul)
+    
+    #Contrucción pueblo Rojo (Tipo Fuego)
+    Rojo = PokePueblos('Rojo', None, None, None)
+    gym = PokeGym(Rojo.name, None)
+    Rojo.gym = gym
+    med = PokeMed(Rojo.name)
+    Rojo.medcenter = med
+    shop = PokeShop(Rojo.name, None, None, None)
+    Rojo.pokeshop = shop
+    pueblos.append(Rojo)
+    
+    #Contrucción pueblo Negro (Tipo Fantasma)
+    Negro = PokePueblos('Negro', None, None, None)
+    gym = PokeGym(Negro.name, None)
+    Negro.gym = gym
+    med = PokeMed(Negro.name)
+    Negro.medcenter = med
+    shop = PokeShop(Negro.name, None, None, None)
+    Negro.pokeshop = shop
+    pueblos.append(Negro)
+    
+    #Contrucción pueblo Fuxia (Tipo Siniestro)
+    Fuxia = PokePueblos('Fuxia', None, None, None)
+    gym = PokeGym(Fuxia.name, None)
+    Fuxia.gym = gym
+    med = PokeMed(Fuxia.name)
+    Fuxia.medcenter = med
+    shop = PokeShop(Fuxia.name, None, None, None)
+    Fuxia.pokeshop = shop
+    pueblos.append(Fuxia)
+    
+    #Contrucción pueblo Plata (Tipo Acero)
+    Plata = PokePueblos('Plata', None, None, None)
+    gym = PokeGym(Plata.name, None)
+    Plata.gym = gym
+    med = PokeMed(Plata.name)
+    Plata.medcenter = med
+    shop = PokeShop(Plata.name, None, None, None)
+    Plata.pokeshop = shop
+    pueblos.append(Plata)
+    
+    #Contrucción Liga Pokemon (Batalla Final)
+    Liga_Pokemon = PokePueblos('Liga_Pokemon', None, None, None)
+    gym = PokeGym(Liga_Pokemon.name, None)
+    Liga_Pokemon.gym = gym
+    med = PokeMed(Liga_Pokemon.name)
+    Liga_Pokemon.medcenter = med
+    shop = PokeShop(Liga_Pokemon.name, None, None, None)
+    Liga_Pokemon.pokeshop = shop
+    pueblos.append(Liga_Pokemon)
     print('PUEBLOS CREADOS EXITOSAMENTE✅...')
-    pass
 
 
 '''
@@ -129,19 +196,25 @@ def rut_db_structure(rut):
 def trainer_db_Structure(trainers):
     pass
 
+
 #Estructura de los pueblos en la base de datos.
 def pub_db_structure(pueblos):
-    pass
+    with open('Db//db_pub.txt', 'w', encoding='UTF-8') as data:
+        for i in pueblos:
+            data.write(f'{i.name};None;None;None;pub\n')
+            data.write(f'{i.gym.pueblo};{i.gym.get_trainers()};gym;\n')
+            data.write(f'{i.medcenter.pueblo};med;\n')
+            data.write(f'{i.pokeshop.pueblo};{len(i.pokeshop.curaciones)};{len(i.pokeshop.defensas)};{len(i.pokeshop.ataques)};shop;\n')
 
 
 '''
 Ejecución del programa
 '''
 #Ejecución de los constructores de la estructura de datos.
-atq_constructor(ataques, tipos)
-atq_db_structure(ataques)
-poke_constr(pokes, tipos)
-poke_db_structure(pokes)
+#atq_constructor(ataques, tipos)
+#atq_db_structure(ataques)
+#poke_constr(pokes, tipos)
+#poke_db_structure(pokes)
 rut_constr(rutas)
 rut_db_structure(rutas)
 pub_constr(pubs)

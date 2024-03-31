@@ -31,7 +31,7 @@ class PokeRutas:
 
 #Clase para pueblos
 class PokePueblos:
-    def __init__(self, name, gym, medcenter, pokeshop):
+    def __init__(self, name, gym = None, medcenter = None, pokeshop = None):
         self.name = name
         self.gym: object = gym
         self.medcenter: object = medcenter
@@ -74,7 +74,7 @@ class PokeShop:
         self.curaciones = curaciones
         if defensas is None:
             defensas = []
-        self.defesas = defensas
+        self.defensas = defensas
         if ataques is None:
             ataques = []
         self.ataques = ataques
@@ -126,8 +126,8 @@ class PokeShop:
 
 #Clase para medcenter
 class PokeMed:
-    def __init__(self, ciudad):
-        self.ciudad = ciudad
+    def __init__(self, pueblo):
+        self.pueblo = pueblo
     def menu(self, user):
         while True:
             elec = validation(int_validatión('>1. Curar pokemones\n>2. Salir'), 1, 2)
@@ -143,13 +143,13 @@ class PokeMed:
 
 #Clase para gimnasios o liga
 class PokeGym:
-    def __init__(self, color, entrenadores = None):
-        self.color = color
+    def __init__(self, pueblo, entrenadores = None):
+        self.pueblo = pueblo
         if entrenadores is None:
             entrenadores = []
         self.entrenadores = entrenadores
         
-    def menu():
+    def menu(self):
         while True:
             elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
             os.system('clear') 
@@ -157,3 +157,9 @@ class PokeGym:
                 pass 
             else:
                 break   
+        
+    def get_trainers(self):
+        array = []
+        for i in self.entrenadores:
+            array.append(i.nombre)
+        return array
