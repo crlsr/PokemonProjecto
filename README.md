@@ -1,7 +1,7 @@
 TEXTEMON by ANDRES ROJAS, CARLOS RODRIGUEZ & DIEGO FERNÁNDEZ
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Este es un juego de aventuras basado en texto inspirado en el mundo de Pokémon. Sumérgete en una emocionante aventura mientras exploras diferentes ubicaciones, enfrentas desafiantes batallas y te conviertes en el campeón de la Liga Pokémon.
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Funcionalidades del juego
 
@@ -18,6 +18,8 @@ Funcionalidades del juego
 -Sanar en Pueblos: En cada pueblo, tendrás la oportunidad de sanar a tu starter, enfrentar al líder del pueblo y avanzar a la siguiente ubicación o regresar a la anterior.
 
 -Líder de la Liga Pokémon: Derrota a los líderes de los pueblos para desafiar al Líder de la Liga Pokémon. ¡Derrotarlo significa que has ganado el juego!
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 JUSTIFICACIÓN DE POR QUÉ SE HIZO ENTRE 3
 
