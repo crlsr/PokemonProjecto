@@ -8,7 +8,7 @@ actual_dir = os.path.dirname(os.path.abspath(__file__))
 principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
-
+from Combate import Pokemon_Combat
 #Importamos las clases necesarias para la contruccion de nuestros objetos
 from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
@@ -42,7 +42,7 @@ def poke_creator(pokes):
             at = eval(array[4])
             tp = eval(array[6])
             atq = eval(array[7])
-            x = Pokemon(array[0], array[1], df[0], df[1], at[0], at[1], array[5], tp, atq)
+            x = Pokemon(array[0], int(array[1]), int(df[0]), int(df[1]), int(at[0]), int(at[1]), int(array[5]), tp, atq)
             pokes.append(x)
             
 
@@ -239,6 +239,8 @@ atq_randomizer(array, array2)
 poke_random(array3, array)
 poke_liga(array3, array)
 
+print(type(array[0].ataques[1]))
+Pokemon_Combat(Pokeusuario('ffgbh', 'hbfbhd', 'bfdhbhd', [array[0]]), array3[5].gym.entrenadores[3])
 
 
 
