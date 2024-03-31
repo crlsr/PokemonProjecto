@@ -26,4 +26,4 @@ Nuestra decisión de trabajar en un grupo de tres se basó principalmente en la 
 compañeros dispuestos a realizar el trabajo, dado que muchos decidieron no participar en él. Además, consideramos que al trabajar en equipo de tres personas, podríamos
 aprovechar la diversidad de ideas y perspectivas, lo que nos brindaría una mayor capacidad de colaboración y retroalimentación mutua. Esta estrategia nos permitió abordar
 el proyecto de manera más completa y eficiente, maximizando así nuestro potencial creativo y productivo. Además, nos permitió generar diálogos y una historia dentro del
-código que previamente no teníamos, añadiendo un componente narrativo que enriquecióaún más nuestro trabajo.
+código que previamente no teníamos, añadiendo un componente narrativo que enriqueció aún más nuestro trabajo.
