@@ -1,82 +1,80 @@
-Placaje;Normal;40;Fisico
-Corte;Normal;50;Fisico
-Derribo;Normal;90;Fisico
-Forcejeo;Normal;50;Fisico
-Amago;Normal;30;Especial
-Lanzarocas;Roca;50;Fisico
-Tumbarocas;Roca;60;Especial
-Romperocas;Roca;125;Especial
-Pedrada;Roca;25;Fisico
-Hachazo Petreo;Roca;65;Fisico
-Picadura;Bicho;60;Fisico
-Mega Cuerno;Bicho;120;Especial
-Corte Furia;Bicho;40;Fisico
-Tijera X;Bicho;80;Especial
-Rodillo de Puas;Bicho;65;Fisico
-Golpe Aereo;Volador;60;Especial
-Pico Taladro;Volador;80;Fisico
-Pajaro Osado;Volador;120;Fisico
-Picotazo;Volador;35;Especial
-Ala bis;Volador;40;Especial
-Patada giro;Lucha;60;Fisico
-Fuerza Bruta;Lucha;120;Especial
-Empujon;Lucha;15;Fisico
-Desquite;Lucha;60;Especial
-Plancha Corporal;Lucha;75;Fisico
-Golpe Fantasma;Fantasma;50;Fisico
-Lenguetazo;Fantasma;30;Especial
-Golpe Umbrio;Fantasma;120;Fisico
-Impresionar;Fantasma;70;Fisico
-Garra Umbria;Fantasma;70;Especial
-Golpe Bajo;Siniestro;70;Fisico
-Ladron;Siniestro;60;Fisico
-Juego Sucio;Siniestro;95;Especial
-Chuleria;Siniestro;20;Fisico
-Giro Vil;Siniestro;60;Especial
-Psicocorte;Psiquico;70;Fisico
-Psicohojas;Psiquico;85;Especial
-Arrumaco;Psiquico;60;Fisico
-Psiquico;Psiquico;95;Especial
-Rayo Psiquico;Psiquico;90;Especial
-Rayo;Electrico;90;Fisico
-Chispa;Electrico;35;Especial
-Impactrueno;Electrico;65;Especial
-Trueno;Electrico;110;Especial
-Colmillo Rayo;Electrico;65;Especial
-Hoja Afilada;Electrico;55;Fisico
-Latigo Cepa;Planta;45;Fisico
-Latigazo;Planta;120;Especial
-Tormenta Floral;Planta;70;Especial
-Hierba Lazo;Planta;60;Fisico
-Acua Jet;Agua;45;Especial
-Pistola Agua;Agua;45;Fisico
-Surf;Agua;95;Especial
-Viraje;Agua;60;Fisico
-Cascada;Agua;110;Especial
-Ascuas;Fuego;40;Fisico
-Golpe Furgo;Fuego;75;Especial
-Lanzallamas;Fuego;90;Especial
-Fuego Sagrado;Fuego;110;Especial
-Colmillo Igneo;Fuego;65;Fisico
-Bola Hielo;Hielo;30;Especial
-Colmillo Hielo;Hielo;65;Fisico
-Golpe Hielo;Hielo;75;Especial
-Rayo Hielo;Hielo;90;Especial
-Ventisca;Hielo;110;Fisico
-Ala Acero;Acero;70;Fisico
-Cabeza Hierro;Acero;80;Fisico
-Embate Supremo;Acero;100;Especial
-Garra Metal;Acero;50;Fisico
-Golpe Bala;Acero;40;Especial
-Acido;Veneno;40;Fisico
-Bomba Acida;Veneno;40;Fisico
-Residuos;Veneno;65;Especial
-Bomba Lodo;Veneno;90;Especial
-Lanzamugre;Veneno;120;Especial
-Ciclon;Dragon;40;Especial
-Rafaga Escamas;Dragon;30;Especial
-Pulso Dragon ;Dragon;90;Fisico
-Asalto Espadon;Dragon;120;Fisico
-Garra Dragon;Dragon;80;Fisico
-
-
+Placaje;Normal;40;Fisico;
+Corte;Normal;50;Fisico;
+Derribo;Normal;90;Fisico;
+Forcejeo;Normal;50;Fisico;
+Amago;Normal;30;Especial;
+Lanzarocas;Roca;50;Fisico;
+Tumbarocas;Roca;60;Especial;
+Romperocas;Roca;125;Especial;
+Pedrada;Roca;25;Fisico;
+Hachazo Petreo;Roca;65;Fisico;
+Picadura;Bicho;60;Fisico;
+Mega Cuerno;Bicho;120;Especial;
+Corte Furia;Bicho;40;Fisico;
+Tijera X;Bicho;80;Especial;
+Rodillo de Puas;Bicho;65;Fisico;
+Golpe Aereo;Volador;60;Especial;
+Pico Taladro;Volador;80;Fisico;
+Pajaro Osado;Volador;120;Fisico;
+Picotazo;Volador;35;Especial;
+Ala bis;Volador;40;Especial;
+Patada giro;Lucha;60;Fisico;
+Fuerza Bruta;Lucha;120;Especial;
+Empujon;Lucha;15;Fisico;
+Desquite;Lucha;60;Especial;
+Plancha Corporal;Lucha;75;Fisico;
+Golpe Fantasma;Fantasma;50;Fisico;
+Lenguetazo;Fantasma;30;Especial;
+Golpe Umbrio;Fantasma;120;Fisico;
+Impresionar;Fantasma;70;Fisico;
+Garra Umbria;Fantasma;70;Especial;
+Golpe Bajo;Siniestro;70;Fisico;
+Ladron;Siniestro;60;Fisico;
+Juego Sucio;Siniestro;95;Especial;
+Chuleria;Siniestro;20;Fisico;
+Giro Vil;Siniestro;60;Especial;
+Psicocorte;Psiquico;70;Fisico;
+Psicohojas;Psiquico;85;Especial;
+Arrumaco;Psiquico;60;Fisico;
+Psiquico;Psiquico;95;Especial;
+Rayo Psiquico;Psiquico;90;Especial;
+Rayo;Electrico;90;Fisico;
+Chispa;Electrico;35;Especial;
+Impactrueno;Electrico;65;Especial;
+Trueno;Electrico;110;Especial;
+Colmillo Rayo;Electrico;65;Especial;
+Hoja Afilada;Electrico;55;Fisico;
+Latigo Cepa;Planta;45;Fisico;
+Latigazo;Planta;120;Especial;
+Tormenta Floral;Planta;70;Especial;
+Hierba Lazo;Planta;60;Fisico;
+Acua Jet;Agua;45;Especial;
+Pistola Agua;Agua;45;Fisico;
+Surf;Agua;95;Especial;
+Viraje;Agua;60;Fisico;
+Cascada;Agua;110;Especial;
+Ascuas;Fuego;40;Fisico;
+Golpe Furgo;Fuego;75;Especial;
+Lanzallamas;Fuego;90;Especial;
+Fuego Sagrado;Fuego;110;Especial;
+Colmillo Igneo;Fuego;65;Fisico;
+Bola Hielo;Hielo;30;Especial;
+Colmillo Hielo;Hielo;65;Fisico;
+Golpe Hielo;Hielo;75;Especial;
+Rayo Hielo;Hielo;90;Especial;
+Ventisca;Hielo;110;Fisico;
+Ala Acero;Acero;70;Fisico;
+Cabeza Hierro;Acero;80;Fisico;
+Embate Supremo;Acero;100;Especial;
+Garra Metal;Acero;50;Fisico;
+Golpe Bala;Acero;40;Especial;
+Acido;Veneno;40;Fisico;
+Bomba Acida;Veneno;40;Fisico;
+Residuos;Veneno;65;Especial;
+Bomba Lodo;Veneno;90;Especial;
+Lanzamugre;Veneno;120;Especial;
+Ciclon;Dragon;40;Especial;
+Rafaga Escamas;Dragon;30;Especial;
+Pulso Dragon ;Dragon;90;Fisico;
+Asalto Espadon;Dragon;120;Fisico;
+Garra Dragon;Dragon;80;Fisico;

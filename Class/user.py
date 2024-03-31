@@ -1,3 +1,7 @@
+'''
+Este modulo es dedicado a la creación de la clase Usuario (clase la cual va a heredar de Entrenador)
+'''
+
 from pokeclases import Trainer
 class Pokeusuario(Trainer):
     def __init__(self, nombre, genero, region_dor, pokemons = None, gimnasios = None, liga = False, objects = None , pokecoins = 0):

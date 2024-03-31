@@ -1,3 +1,12 @@
+'''
+En este modulo vamos a crear todas las clases dedicadas a las edificaciones, rutas y pueblos del juego.
+Se trataran temas tales como:
+-> Creación de Rutas
+-> Creación de Pueblos 
+-> Creación de edificaciones complementarias de los pueblos (shop, gym, med)
+->  Empaquetameinto de estructuras dentro de los pueblos
+'''
+
 from funtions.funciones import validation, int_validatión
 from random import randint
 import os
