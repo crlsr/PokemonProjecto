@@ -28,6 +28,8 @@ class Trainer:
             if pokemon.Is_Alive() is True:
                 return pokemon
         return None
+    def get_objects(self):
+        return self.objetos
 
 #Objetos, para aumentar la vida, ataque, defensa
     

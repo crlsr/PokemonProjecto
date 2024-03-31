@@ -32,9 +32,25 @@ def select_player_attack(Pokemon):
         if answer <= len(possible_attacks):
             return possible_attacks[answer-1]
         elif answer == 0:
-            return 0
+            return None
         else:
             print("Respuesta Invalida")
+
+def select_player_item(Trainer):
+    while True:
+        count = 1
+        possible_items = Trainer.get_objects()
+        for objeto in possible_items:
+            print("{}. {}".format(count, objeto.get_name()))
+            count += 1
+        print("0. para salir")
+        answer = int(input(""))
+        if answer <= len(possible_items):
+            return possible_items[answer-1]
+        elif answer == 0:
+            return None
+        else:
+            print("Respuesta invalida")
 
 def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
     stab_bonus = get_STAB(Giving_Pokemon, attack.get_type_object())
@@ -64,5 +80,10 @@ def Pokemon_Combat(Player_Trainer, Enemy_Trainer):
     current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
     print("Combate versus {}!".format(Enemy_Trainer.get_name()))
     while Player_Trainer.get_available_pokemon() > 0 and Enemy_Trainer.get_available_pokemon() > 0:
+        current_attack = None
         while True:
-            print("""""")
+            print("""1. Usar un ataque
+2. Usar un objeto""")
+            answer = input("")
+            if answer == "1":
+                current_attack = select_player_attack(current_pkmn_user)
