@@ -27,7 +27,7 @@ class PokeRutas:
     def __repr__(self):
         return f'Ruta {self.nro}'
     
-    def menu_ruta(self, zonas, posicion):
+    def menu_ruta(self, user, zonas, posicion):
         while True:
             num = randint(0, len(self.pokes))-1
             if num == -1:

@@ -65,13 +65,14 @@ def pubs_creator(pueblos):
             if 'pub' in array:
                 x = PokePueblos(array[0], array[1], array[2], array[3])
             elif 'gym' in array:
-                y = PokeGym(array[0], array[1])
+                lista = eval(array[1])
+                y = PokeGym(array[0], lista)
                 x.gym = y
             elif 'med' in array:
                 y = PokeMed(array[0])
                 x.medcenter = y
             elif 'shop' in array:
-                y = PokeShop(array[0], array[1], array[2], array[3])
+                y = PokeShop(array[0])
                 x.pokeshop = y
                 pueblos.append(x)
             
@@ -134,15 +135,33 @@ def atq_randomizer(pokemons, ataques):
                 else:
                     continue
                 
-#Función para darle a cada entrenador un pokemon random
-def poke_random(trainers, pokemon):
-    for i in trainers:
-        if i.ubicacion == 'Naranja':
-            pass
-
 #Función para meter a cada entrenador en su pueblo
 def trainer_pub(trainer, pueblos):
-    pass
+    for i in pueblos:
+        for j in trainer:
+            if j.ubicacion == i.name:
+                i.gym.entrenadores.append(j)
+            else:
+                continue
+                
+#Función para darle a cada entrenador un pokemon random
+def poke_random(pueblos, pokemons):
+    for i in pueblos.gym.entrenadores:
+        if i.ubicacion == 'Naranja': #Tipo Normal
+            clase = [poke for poke in pokemons if ('Normal' in poke.tipos)]
+        elif i.ubicacion == 'Azul': #Tipo Agua
+            pass
+        elif i.ubicacion == 'Rojo': #Tipo Fuego
+            pass
+        elif i.ubicacion == 'Negro': #Tipo Fantasma
+            pass
+        elif i.ubicacion == 'Fuxia': #Tipo Siniestro
+            pass
+        elif i.ubicacion == 'Plata': #Tipo Acero
+            pass
+        else:
+            pass
+        
 
 
 '''
@@ -150,14 +169,21 @@ Ejecución del programa
 '''
 array = []
 array2 = []
+array3 = []
+array4 = []
 atq_creator(array2)
 poke_creator(array)
+pubs_creator(array3)
+trainers_creator(array4)
 
 atq_class_asig(array2, tipos)
 pokes_type_asig(array, tipos)
+trainer_pub(array4, array3)
 
 atq_randomizer(array, array2)
 
 atq_randomizer(array, array2)
+
+print(array3[6].gym.entrenadores[0].ubicacion)
 
 
