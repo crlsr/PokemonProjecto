@@ -78,7 +78,6 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
     return int(damage)
 
 def use_attack(Receiving_Pokemon, Giving_Pokemon, attack):
-    print(attack.get_type_object())
     damage = calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack)
     print("{} ha usado {}".format(Giving_Pokemon.get_name(), attack.get_name()))
     Receiving_Pokemon.Update_hp(-damage)
@@ -99,7 +98,7 @@ def Enemy_move(Enemy_Trainer, current_pokemon, user_pokemon):
         del Enemy_items[0]
     else:
         possible_attacks = current_pokemon.get_attacks()
-        attack_choice = random.randint(0, len(possible_attacks)-1)
+        attack_choice = possible_attacks[random.randint(0, len(possible_attacks)-1)]
         use_attack(user_pokemon, current_pokemon, attack_choice)
 
 def Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item):
@@ -128,7 +127,6 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             answer = input("")
             if answer == "1":
                 current_attack = select_player_attack(current_pkmn_user)
-                print(current_attack.get_type_object())
                 if current_attack is None:
                     continue
                 break
@@ -165,4 +163,5 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
         print("Ganaste!")
         Player_Trainer.add_win()
         return True
+    print("Perdiste")
     return False
