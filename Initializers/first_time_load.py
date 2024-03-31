@@ -12,8 +12,15 @@ sys.path.append(principal_dir)
 #Importamos las clases necesarias para la contruccion de nuestros objetos
 from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
+
+from Class.pokeclases import Pokeusuario
+
+from random import randint
+
 from Class.rutas import PokeRutas, PokePueblos, PokeMed, PokeGym, PokeShop
-from Class.user import Pokeusuario
+
+#Lista de tipos
+tipos = [Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno]
 
 #Creación de ataques
 def atq_creator(ataques):
@@ -90,13 +97,67 @@ def create_user(user):
 
 
 '''
-En este apartado realizamos todos los procesos de empaquetamiento de datos (meter los pokemons dentro de sus repectivos entrenadores, meter las edificaciones dentro de sus respectivos pueblos, y los pokemons salvajes dentro de sus respectivas rutas)
+En este apartado realizamos todos los procesos de empaquetamiento de datos (meter los pokemons dentro de sus respectivos entrenadores, meter los ataques dentro de sus respectivos pokemons, y los pokemons salvajes dentro de sus respectivas rutas, etc...)
 '''
+
+#Función para asignarle a cada ataque, su tipo
+def atq_class_asig(ataques, tipos):
+    for i in ataques:
+        cc = 0
+        for tipo in tipos:
+            if tipo.show(tipo) == i.type:
+                i.type = tipo
+                cc += 1
+            else:
+                continue
+
+#Función para asignarle a cada pokemon su tipo:
+def pokes_type_asig(pokes, tipos):
+    for i in pokes:
+        cc = 0
+        for j in i.tipos:
+            for tipo in tipos:
+                if tipo.show(tipo) == j:
+                    i.tipos[cc] = tipo
+                    cc += 1
+                else:
+                    continue
+
+#Función para darle ataques aleatorios a los pokemons segun su tipo
+def atq_randomizer(pokemons, ataques):
+    for pokemon in pokemons:
+        for i in ataques:
+            if i.type in pokemon.tipos:
+                proba = randint(1, 3)
+                if proba == 1 and len(pokemon.ataques)<6:
+                    pokemon.ataques.append(i)
+                else:
+                    continue
+                
+#Función para darle a cada entrenador un pokemon random
+def poke_random(trainers, pokemon):
+    for i in trainers:
+        if i.ubicacion == 'Naranja':
+            pass
+
+#Función para meter a cada entrenador en su pueblo
+def trainer_pub(trainer, pueblos):
+    pass
 
 
 '''
 Ejecución del programa
 '''
+array = []
+array2 = []
+atq_creator(array2)
+poke_creator(array)
+
+atq_class_asig(array2, tipos)
+pokes_type_asig(array, tipos)
+
+atq_randomizer(array, array2)
+
+atq_randomizer(array, array2)
 
 
-trainers_creator([])

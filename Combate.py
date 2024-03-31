@@ -1,5 +1,4 @@
-from Class.pokeclases import Pokemon, Trainer, Ataque, Objeto, Type, Lucha, Normal, Volador, Veneno, Tierra, Roca, Bicho, Fantasma, Acero, Fuego, Agua, Planta, Electrico, Psiquico, Hielo, Dragon, Siniestro
-from Class.user import Pokeusuario
+from Class.pokeclases import Pokemon, Trainer, Ataque, Objeto, Type, Lucha, Normal, Volador, Veneno, Tierra, Roca, Bicho, Fantasma, Acero, Fuego, Agua, Planta, Electrico, Psiquico, Hielo, Dragon, Siniestro, Pokeusuario
 import random
 #To-Do función combate
 

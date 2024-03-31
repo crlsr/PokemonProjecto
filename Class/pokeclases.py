@@ -48,8 +48,24 @@ class Trainer:
     def __repr__(self) -> str:
         return f'{self.nombre}'
 
+
+#Usuario Pokemon
+class Pokeusuario(Trainer):
+    def __init__(self, nombre, genero, region_dor, pokemons = None, gimnasios = None, liga = False, objects = None , pokecoins = 0):
+        super().__init__(nombre, pokemons, objects)
+        self.genero = genero
+        self.region_dor = region_dor
+        if gimnasios is None:
+            gimnasios = []
+        self.gimnasios = gimnasios
+        self.liga = liga
+        self.pokecoins = pokecoins
+        self.batallas_ganadas = 0
+
+    def add_win(self):
+        self.batallas_ganadas += 1
+
 #Objetos, para aumentar la vida, ataque, defensa
-    
 class Objeto:
     def __init__(self, nombre, mod_vida=0, mod_ataque=1, mod_defensa=1):
         self.nombre = nombre
@@ -181,7 +197,7 @@ class Ataque:
         return f'{self.name}'
     
     def show(self):
-        return "{}, Tipo: {}, Daño: {}, {}".format(self.name, self.type.show(), self.damage, self.damage_type)
+        return f'{self.name}, Tipo: {self.type.show(self.type)}, Daño: {self.damage}, {self.damage_type}'
     
     def __repr__(self) -> str:
         return f'{self.name}'

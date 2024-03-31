@@ -3,7 +3,6 @@ Este modulo es dedicdo a la creación de todas las funciones creadas para darle 
 En este apartados abran aspectos como validaciones, etc...
 '''
 #Importaciones de librerias necesarias para la creación de funciones
-from random import randint
 
 
 #Función para validar entradas númericas definidas en un rango númerico
