@@ -73,11 +73,11 @@ class PokePueblos:
             if elec == 1:
                 self.show()
             elif elec == 2:
-                self.medcenter.menu(self.medcenter)
+                self.medcenter.menu(self.medcenter, user)
             elif elec == 3:
-                self.pokeshop.menu(self.pokeshop)
+                self.pokeshop.menu(self.pokeshop, user, 3)
             elif elec == 4:
-                boolean = self.gym.menu(self.gym)
+                boolean = self.gym.menu(self.gym, user)
                 if boolean == False:
                     for i in user.pokemons:
                         i.ps_actuales = i.ps_max
@@ -102,7 +102,8 @@ class PokeShop:
         self.curaciones = curaciones
         
     def menu(self, user, curacion):
-        self.curaciones.append(Objeto('Poción de curación', 45, 1, 1))
+        for i in range(curacion):
+            self.curaciones.append(Objeto('Poción de curación', 45, 1, 1))
         while True:
             elec = validation(int_validatión('Que deseas comprar?\n>1. Curación: 1200\n>2. Posción de defensa: 900\n>3. Poción de ataque: 1000\n>4. Salir\n>>>'), 1, 4)
             os.system('clear')
@@ -147,7 +148,7 @@ class PokeGym:
             entrenadores = []
         self.entrenadores = entrenadores
         
-    def menu(self, user, pueblo):
+    def menu(self, user):
         while True:
             elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
             os.system('clear') 
