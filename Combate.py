@@ -149,21 +149,21 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
                 current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
-                break
+                continue
             Enemy_move(Enemy_Trainer, current_pkmn_enemy, current_pkmn_user)
             if current_pkmn_user.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_user.get_name()))
-                break
+                continue
         else:
             Enemy_move(Enemy_Trainer, current_pkmn_enemy, current_pkmn_user)
             if current_pkmn_user.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_user.get_name()))
-                break
+                continue
             Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item, Player_Trainer)
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
                 current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
-                break
+                continue
     Player_Trainer.reset_stats_pkmn()
     if Player_Trainer.get_available_pokemon() > 0:
         print("Ganaste!")
