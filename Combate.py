@@ -99,7 +99,7 @@ def Enemy_move(Enemy_Trainer, current_pokemon, user_pokemon):
     if choice == 1 and len(Enemy_Trainer.get_objects()) > 0:
         Enemy_items = Enemy_Trainer.get_objects()
         use_item(current_pokemon, Enemy_items[0])
-        del Enemy_items[0]
+        Enemy_Trainer.get_objects().remove(Enemy_items[0])
     else:
         possible_attacks = current_pokemon.get_attacks()
         attack_choice = possible_attacks[random.randint(0, len(possible_attacks)-1)]
@@ -110,6 +110,8 @@ def Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_i
         use_attack(current_pkmn_enemy, current_pkmn_user, current_attack)
     else:
         use_item(current_pkmn_user, current_item)
+        current_pkmn_user.get_objects().remove(current_item)
+        
 
 def check_status(Player_Trainer, Enemy_Trainer):
     if Player_Trainer.get_available_pokemon() > 0 and Enemy_Trainer.get_available_pokemon() > 0:
