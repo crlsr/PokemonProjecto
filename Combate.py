@@ -43,7 +43,9 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
         index = 0
     elif attack.get_attack_type() == "Especial":
         index = 1
-    attack_stat = Giving_Pokemon.
+    attack_stat = Giving_Pokemon.Get_attack_stat()
+    defense_stat = Receiving_Pokemon.Get_defense_stat()
+    attack_power = attack.get_damage()
     type_multiplier = 1
     attack_type = attack.get_type_object()
     attack_type_string = attack_type.show()
@@ -51,7 +53,8 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
         type_relation = type.type_multiplier(attack_type_string)
         type_multiplier = type_multiplier*type_relation
     
-    damage = ()
+    damage = (((20+2)*attack_power*(attack_stat[index]/defense_stat[index]))/50) * stab_bonus * crit_bonus
+    return damage
     
 
 
@@ -63,4 +66,3 @@ def Pokemon_Combat(Player_Trainer, Enemy_Trainer):
     while Player_Trainer.get_available_pokemon() > 0 and Enemy_Trainer.get_available_pokemon() > 0:
         while True:
             print("""""")
-print(get_crit())

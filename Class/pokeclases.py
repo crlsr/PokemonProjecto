@@ -97,6 +97,12 @@ class Pokemon:
     def Update_defense(self, mult):
         self.defensa_temp = (self.defensa_temp[0]*mult, self.defensa_temp[1]*mult)
 
+    def Get_attack_stat(self):
+        return self.ataque_temp
+    
+    def Get_defense_stat(self):
+        return self.defensa_temp
+
     def reset_stats(self):
         self.ataque_temp = self.ataque_stats
         self.defensa_temp = self.defensa_stats
