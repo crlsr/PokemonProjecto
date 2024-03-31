@@ -1,6 +1,6 @@
 '''
-Este modulo es dedicdo a la creación de todas las funciones creadas para darle el funcionamiento a nuestro programa
-En este apartados abran aspectos como validaciones, etc...
+Este modulo es dedicado a la creación de todas las funciones creadas para darle el funcionamiento a nuestro programa
+En este apartados habrán aspectos como validaciones, etc...
 '''
 #Importaciones de librerias necesarias para la creación de funciones
 from random import randint
