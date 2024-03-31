@@ -28,12 +28,14 @@ def select_player_attack(Pokemon):
             print("{}. {}".format(count, attack.get_name()))
             count += 1
         print("0. Para salir")
-        answer = int(input(""))
-        if answer == 0:
-            return None
-        elif answer <= len(possible_attacks):
-            return possible_attacks[answer-1]
-        else:
+        try:
+            answer = int(input(""))
+            if answer == 0:
+                return None
+            elif answer <= len(possible_attacks):
+                print(possible_attacks[answer-1].get_type_object())
+                return possible_attacks[answer-1]
+        except:
             print("Respuesta Invalida")
 
 def select_player_item(Trainer):
@@ -44,12 +46,13 @@ def select_player_item(Trainer):
             print("{}. {}".format(count, objeto.get_name()))
             count += 1
         print("0. para salir")
-        answer = int(input(""))
-        if answer == 0:
-            return None
-        elif answer <= len(possible_items):
-            return possible_items[answer-1]
-        else:
+        try:
+            answer = int(input(""))
+            if answer == 0:
+                return None
+            elif answer <= len(possible_items) and answer > 0:
+                return possible_items[answer-1]
+        except:
             print("Respuesta invalida")
 
 def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
@@ -75,6 +78,7 @@ def calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack):
     return int(damage)
 
 def use_attack(Receiving_Pokemon, Giving_Pokemon, attack):
+    print(attack.get_type_object())
     damage = calculate_damage(Receiving_Pokemon, Giving_Pokemon, attack)
     print("{} ha usado {}".format(Giving_Pokemon.get_name(), attack.get_name()))
     Receiving_Pokemon.Update_hp(-damage)
@@ -124,6 +128,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             answer = input("")
             if answer == "1":
                 current_attack = select_player_attack(current_pkmn_user)
+                print(current_attack.get_type_object())
                 if current_attack is None:
                     continue
                 break
@@ -139,7 +144,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item)
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
-                current_pkmn_enemy.get_next_pokemon()
+                current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
                 break
             Enemy_move(Enemy_Trainer, current_pkmn_enemy, current_pkmn_user)
             if current_pkmn_user.Is_Alive() is False:
@@ -153,7 +158,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item)
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
-                current_pkmn_enemy.get_next_pokemon()
+                current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
                 break
     Player_Trainer.reset_stats_pkmn()
     if Player_Trainer.get_available_pokemon() > 0:
