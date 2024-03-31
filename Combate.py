@@ -105,12 +105,12 @@ def Enemy_move(Enemy_Trainer, current_pokemon, user_pokemon):
         attack_choice = possible_attacks[random.randint(0, len(possible_attacks)-1)]
         use_attack(user_pokemon, current_pokemon, attack_choice)
 
-def Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item):
+def Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item, Player_Trainer):
     if current_attack is not None:
         use_attack(current_pkmn_enemy, current_pkmn_user, current_attack)
     else:
         use_item(current_pkmn_user, current_item)
-        current_pkmn_user.get_objects().remove(current_item)
+        Player_Trainer.get_objects().remove(current_item)
         
 
 def check_status(Player_Trainer, Enemy_Trainer):
@@ -145,7 +145,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
                 print("Valor Inválido")
 
         if compare_speed(current_pkmn_user, current_pkmn_enemy) is True:
-            Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item)
+            Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item, Player_Trainer)
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
                 current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
@@ -159,7 +159,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             if current_pkmn_user.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_user.get_name()))
                 break
-            Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item)
+            Player_move(current_pkmn_user, current_pkmn_enemy, current_attack, current_item, Player_Trainer)
             if current_pkmn_enemy.Is_Alive() is False:
                 print("{} ha sido derrotado".format(current_pkmn_enemy.get_name()))
                 current_pkmn_enemy = Enemy_Trainer.get_next_pokemon()
