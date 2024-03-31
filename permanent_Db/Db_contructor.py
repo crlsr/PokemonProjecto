@@ -56,7 +56,6 @@ def atq_constructor(atq, tipos):
     print('ATAQUES CREADOS EXITOSAMENTE✅...')
    
 
-
 #Creación de pokemones (instancias).
 def poke_constr(pokemons, tipos):
     print('SE HA INICIALIZADO EL CREADOR DE POKEMONES💻')
@@ -100,7 +99,7 @@ def rut_constr(rutas):
 def pub_constr(pueblos):
     print('SE HA INICIALIZADO EL CREADOR DE PUEBLOS 💻')
     #Contrucción pueblo Naranja (Tipo Normal)
-    Naranja = PokePueblos('Naranaja', None, None, None)
+    Naranja = PokePueblos('Naranja', None, None, None)
     gym = PokeGym(Naranja.name, None)
     Naranja.gym = gym
     med = PokeMed(Naranja.name)
@@ -171,6 +170,79 @@ def pub_constr(pueblos):
     print('PUEBLOS CREADOS EXITOSAMENTE✅...')
 
 
+#Creador de entrenadores para cada gimnasio
+def trainer_contr(trainer, pueblos):
+    #Entrenadores gimnasio Naranja
+    trainernar1 = Trainer('Pedrito', None, None, pueblos[0].name)  
+    trainer.append(trainernar1)   
+    trainernar2 = Trainer('Dalto', None, None, pueblos[0].name)   
+    trainer.append(trainernar2)     
+    trainernar3 = Trainer('Joseca', None, None, pueblos[0].name)
+    trainer.append(trainernar3)        
+    trainernar4 = Trainer('Jaimito', None, None, pueblos[0].name)
+    trainer.append(trainernar4)   
+    
+    #Entrenadores gimnasio Azul
+    traineraz1 = Trainer('Andres Rojas', None, None, pueblos[1].name)
+    trainer.append(traineraz1)        
+    traineraz2 = Trainer('Carlos Rodriguez', None, None, pueblos[1].name)  
+    trainer.append(traineraz2)           
+    traineraz3 = Trainer('Cerati', None, None, pueblos[1].name) 
+    trainer.append(traineraz3)            
+    traineraz4 = Trainer('Michael Feels', None, None, pueblos[1].name)
+    trainer.append(traineraz4)        
+    
+    #Entrenadores gimnasio Rojo
+    trainerroj1 = Trainer('Jhonnathan', None, None, pueblos[2].name)   
+    trainer.append(trainerroj1)        
+    trainerroj2 = Trainer('Ferrero', None, None, pueblos[2].name)  
+    trainer.append(trainerroj2)         
+    trainerroj3 = Trainer('JulioProfe', None, None, pueblos[2].name) 
+    trainer.append(trainerroj3)          
+    trainerroj4 = Trainer('Nancy', None, None, pueblos[2].name)  
+    trainer.append(trainerroj4)        
+    
+    #Entrenadores gimnasio Negro
+    trainerneg1 = Trainer('Chris Andrade', None, None, pueblos[3].name)
+    trainer.append(trainerneg1)        
+    trainerneg2 = Trainer('Leo Rojas', None, None, pueblos[3].name)
+    trainer.append(trainerneg2)        
+    trainerneg3 = Trainer('Nacho Redondo', None, None, pueblos[3].name)
+    trainer.append(trainerneg3)        
+    trainerneg4 = Trainer('Eliu', None, None, pueblos[3].name)
+    trainer.append(trainerneg4)        
+    
+    #Entrenadores gimnasio Fuxia
+    trainerfuxia1 = Trainer('Neutro Shorty', None, None, pueblos[4].name)
+    trainer.append(trainerfuxia1)        
+    trainerfuxia2 = Trainer('Akapellah', None, None, pueblos[4].name)
+    trainer.append(trainerfuxia2)        
+    trainerfuxia3 = Trainer('Danny Ocean', None, None, pueblos[4].name)
+    trainer.append(trainerfuxia3)        
+    trainerfuxia4 = Trainer('Canserbero', None, None, pueblos[4].name)
+    trainer.append(trainerfuxia4)        
+    
+    #Entrenadores gimnasio Plata
+    trainerplata1 = Trainer('Electricista de Cantv', None, None, pueblos[5].name)
+    trainer.append(trainerplata1)        
+    trainerplata2 = Trainer('Trabajador de Fontana', None, None, pueblos[5].name)
+    trainer.append(trainerplata2)        
+    trainerplata3 = Trainer('Estudiante Unimetano', None, None, pueblos[5].name)
+    trainer.append(trainerplata3)        
+    trainerplata4 = Trainer('Andres Bello', None, None, pueblos[5].name)
+    trainer.append(trainerplata4)        
+    
+    #Entrenadores Alto Mando
+    trainerlig1 = Trainer('Margarita de Abreu', None, None, pueblos[-1].name)
+    trainer.append(trainerlig1)        
+    trainerlig2 = Trainer('Jose Quevedo', None, None, pueblos[-1].name)
+    trainer.append(trainerlig2)        
+    trainerlig3 = Trainer('Javier Texeira', None, None, pueblos[-1].name)
+    trainer.append(trainerlig3)        
+    trainerlig4 = Trainer('Fernando Torre Mora', None, None, pueblos[-1].name)
+    trainer.append(trainerlig4)        
+
+
 '''
 Estas funciones tienen como fin meter la sinstancias que creamso en nuestra base de datos, inicializandola.
 '''
@@ -191,20 +263,22 @@ def rut_db_structure(rut):
     with open('Db//db_rutas.txt', 'w', encoding= 'UTF-8') as data:
         for i in rut:
             data.write(f'{i.entrenadores};{i.nro};\n')
-            
-#Estructura para los entrnadores:
-def trainer_db_Structure(trainers):
-    pass
-
 
 #Estructura de los pueblos en la base de datos.
 def pub_db_structure(pueblos):
     with open('Db//db_pub.txt', 'w', encoding='UTF-8') as data:
         for i in pueblos:
-            data.write(f'{i.name};None;None;None;pub\n')
+            data.write(f'{i.name};None;None;None;pub;\n')
             data.write(f'{i.gym.pueblo};{i.gym.get_trainers()};gym;\n')
             data.write(f'{i.medcenter.pueblo};med;\n')
             data.write(f'{i.pokeshop.pueblo};{len(i.pokeshop.curaciones)};{len(i.pokeshop.defensas)};{len(i.pokeshop.ataques)};shop;\n')
+            
+#Estructura para los entrnadores:
+def trainer_db_Structure(trainers):
+    with open('Db//db_trainers.txt', 'w', encoding='UTF-8') as data:
+        for i in trainers:
+            data.write(f'{i.nombre};{i.get_pokes()};{i.obj_num()};{i.ubicacion};\n')
+            
 
 
 '''
@@ -219,6 +293,8 @@ rut_constr(rutas)
 rut_db_structure(rutas)
 pub_constr(pubs)
 pub_db_structure(pubs)
+trainer_contr(tra, pubs)
+trainer_db_Structure(tra)
 
 
 

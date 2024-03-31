@@ -7,7 +7,7 @@ Este modulo esta dedicado a la creación de las clases mediante las cuales se va
 # Entrenador, clase que maneja a los pokemon, que maneja a las clases tipo y ataque
 
 class Trainer:
-    def __init__(self, nombre, pokemones = None, objetos = None):
+    def __init__(self, nombre, pokemones = None, objetos = None, ubicacion = None):
         self.nombre = nombre
         if pokemones is None:
             pokemones = []
@@ -15,6 +15,48 @@ class Trainer:
         if objetos is None:
             objetos = []
         self.objetos = objetos
+        self.ubicacion = ubicacion
+    def get_pokes(self):
+        array = []
+        for i in self.pokemones:
+            array.append(i.nombre)
+        return array
+    
+    def obj_num(self):
+        return len(self.objetos)
+    
+    def get_available_pokemon(self):
+        number_of_pokemon = len(self.pokemones)
+        for pokemon in self.pokemones:
+            if pokemon.Is_Alive() is False:
+                number_of_pokemon -= 1
+        return number_of_pokemon
+    def get_name(self):
+        return self.nombre
+    def get_next_pokemon(self):
+        for pokemon in self.pokemones:
+            if pokemon.Is_Alive() is True:
+                return pokemon
+        return None
+    def get_objects(self):
+        return self.objetos
+
+#Objetos, para aumentar la vida, ataque, defensa
+    
+class Objeto:
+    def __init__(self, nombre, mod_vida=0, mod_ataque=1, mod_defensa=1):
+        self.nombre = nombre
+        self.mod_vida = mod_vida
+        self.mod_ataque = mod_ataque
+        self.mod_defensa = mod_defensa
+    def get_life(self):
+        return self.mod_vida
+    def get_attack(self):
+        return self.mod_ataque
+    def get_defense(self):
+        return self.mod_defensa
+    def get_name(self):
+        return self.nombre
 
 #Pokemon, posee atributos ataque y tipo, las interacciones de daño no se guardan en el porque requieren de datos de otro pokemon:
 class Pokemon:
@@ -23,8 +65,10 @@ class Pokemon:
         self.ps_max = ps_max
         #ps_actuales es el que se modifica, nunca modificar ps_max, no tenemos niveles
         self.ps_actuales = ps_max
-        self.defena_stats = (defensa_fisica, defensa_especial)
+        self.defensa_stats = (defensa_fisica, defensa_especial)
+        self.defensa_temp = self.defensa_stats
         self.ataque_stats = (ataque_fisico, ataque_especial)
+        self.ataque_temp = self.ataque_stats
         self.velocidad = velocidad
         if tipos is None:
             tipos = []
@@ -42,9 +86,47 @@ class Pokemon:
             array.append(i.show(i))
         return array
     
+    def get_types_object(self):
+        return self.tipos
+
+    def get_attacks(self):
+        return self.ataques
+
     def load_ps(self, ps):
         self.ps_actuales = ps
-        
+
+    def Update_hp(self, change_hp):
+        if self.ps_actuales + change_hp > self.ps_max:
+            self.ps_actuales = self.ps_max
+        elif self.ps_actuales <= 0:
+            self.ps_actuales = 0
+        else:
+            self.ps_actuales += change_hp
+
+    def Update_attack(self, mult):
+        self.ataque_temp = (self.ataque_temp[0]*mult, self.ataque_temp[1]*mult)
+
+    def Update_defense(self, mult):
+        self.defensa_temp = (self.defensa_temp[0]*mult, self.defensa_temp[1]*mult)
+
+    def Get_attack_stat(self):
+        return self.ataque_temp
+    
+    def Get_defense_stat(self):
+        return self.defensa_temp
+
+    def reset_stats(self):
+        self.ataque_temp = self.ataque_stats
+        self.defensa_temp = self.defensa_stats
+
+    def Is_Alive(self):
+        if self.ps_actuales > 0:
+            return True
+        return False
+
+    def full_heal(self):
+        self.ps_actuales = self.ps_max
+
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.name}'
     
@@ -67,6 +149,9 @@ class Ataque:
     def get_type(self):
         return f'{self.type}'
     
+    def get_type_object(self):
+        return self.type
+
     def get_damage(self):
         return self.damage
     
@@ -84,7 +169,24 @@ class Ataque:
 
 #Tipos:
 
-class Normal:
+class Type:
+    Resistencia = []
+    Inmunidades = []
+    Debilidades = []
+
+    def type_multiplier(self, type):
+        if type in self.Resistencia:
+            return 1/2
+        elif type in self.Debilidades:
+            return 2
+        elif type in self.Inmunidades:
+            return 0
+        else:
+            return 1
+        
+
+
+class Normal(Type):
     Resistencia = []
     Inmunidades = ["Fantasma"]
     Debilidades = ["Lucha"]
@@ -93,7 +195,7 @@ class Normal:
         return 'Normal'
     
 
-class Lucha:
+class Lucha(Type):
     Resistencia = ["Roca", "Bicho", "Siniestro"]
     Inmunidades = []
     Debilidades = ["Volador", "Psiquico"]
@@ -101,7 +203,7 @@ class Lucha:
         return 'Lucha'
     
 
-class Volador:
+class Volador(Type):
     Resistencia = ["Lucha", "Bicho", "Planta"]
     Inmunidades = ["Tierra"]
     Debilidades = ["Roca", "Electrico", "Hielo"]
@@ -109,7 +211,7 @@ class Volador:
         return 'Volador'
     
 
-class Veneno:
+class Veneno(Type):
     Resistencia = ["Lucha", "Veneno", "Bicho", "Planta"]
     Inmunidades = []
     Debilidades = ["Tierra", "Psiquico"]
@@ -117,7 +219,7 @@ class Veneno:
         return 'Veneno'
     
 
-class Tierra:
+class Tierra(Type):
     Resistencia = ["Veneno", "Roca"]
     Inmunidades = ["Electrico"]
     Debilidades = ["Agua", "Planta", "Hielo"]
@@ -125,7 +227,7 @@ class Tierra:
         return 'Tierra'
     
 
-class Roca:
+class Roca(Type):
     Resistencia = ["Normal", "Volador", "Veneno", "Fuego"]
     Inmunidades = []
     Debilidades = ["Lucha", "Tierra", "Acero", "Agua", "Planta"]
@@ -133,7 +235,7 @@ class Roca:
         return 'Roca'
     
 
-class Bicho:
+class Bicho(Type):
     Resistencia = ["Lucha", "Tierra", "Planta"]
     Inmunidades = []
     Debilidades = ["Volador", "Roca", "Fuego"]
@@ -141,7 +243,7 @@ class Bicho:
         return 'Bicho'
     
 
-class Fantasma:
+class Fantasma(Type):
     Resistencia = ["Veneno", "Bicho"]
     Inmunidades = ["Normal", "Lucha"]
     Debilidades = ["Fantasma", "Siniestro"]
@@ -149,7 +251,7 @@ class Fantasma:
         return 'Fantasma'
     
 
-class Acero:
+class Acero(Type):
     Resistencia = ["Normal", "Volador", "Roca", "Bicho", "Acero", "Planta", "Psiquico", "Hielo", "Dragon"]
     Inmunidades = ["Veneno"]
     Debilidades = ["Lucha", "Tierra", "Fuego"]
@@ -157,7 +259,7 @@ class Acero:
         return 'Acero'
 
 
-class Fuego:
+class Fuego(Type):
     Resistencia = ["Bicho", "Acero", "Fuego", "Planta"]
     Inmunidades = []
     Debilidades = ["Tierra", "Roca", "Agua"]
@@ -165,14 +267,14 @@ class Fuego:
         return 'Fuego'
     
 
-class Agua:
+class Agua(Type):
     Resistencia = ["Acero", "Fuego", "Agua", "Hielo"]
     Inmunidades = []
     Debilidades = ["Planta", "Electrico"]
     def show(self) -> str:
         return 'Agua'
     
-class Planta:
+class Planta(Type):
     Resistencia = ["Tierra", "Agua", "Planta", "Electrico"]
     Inmunidades = []
     Debilidades = ["Volador", "Veneno", "Bicho", "Fuego", "Hielo"]
@@ -180,7 +282,7 @@ class Planta:
         return 'Planta'
     
 
-class Electrico:
+class Electrico(Type):
     Resistencia = ["Volador", "Acero", "Electrico"]
     Inmunidades = []
     Debilidades = ["Tierra"]
@@ -188,7 +290,7 @@ class Electrico:
         return 'Electrico'
     
 
-class Psiquico:
+class Psiquico(Type):
     Resistencia = ["Lucha", "Psiquico"]
     Inmunidades = []
     Debilidades = ["Bicho", "Fantasma", "Siniestro"]
@@ -196,7 +298,7 @@ class Psiquico:
         return 'Psiquico'
    
 
-class Hielo:
+class Hielo(Type):
     Resistencia = ["Hielo"]
     Inmunidades = []
     Debilidades = ["Lucha", "Roca", "Acero", "Fuego"]
@@ -204,7 +306,7 @@ class Hielo:
         return 'Hielo'
     
 
-class Dragon:
+class Dragon(Type):
     Resistencia = ["Fuego", "Agua", "Planta", "Electrico"]
     Inmunidades = []
     Debilidades = ["Hielo", "Dragon"]
@@ -212,11 +314,10 @@ class Dragon:
         return 'Dragon'
     
 
-class Siniestro:
+class Siniestro(Type):
     Resistencia = ["Fantasma", "Siniestro"]
     Inmunidades = ["Psiquico"]
     Debilidades = ["Lucha", "Bicho"]
     def show(self) -> str:
         return 'Siniestro'
     
-
