@@ -168,6 +168,9 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
     if Player_Trainer.get_available_pokemon() > 0:
         print("Ganaste!")
         Player_Trainer.add_win()
+        if Player_Trainer.check_for_new_move() is True:
+            #AGREGAR FUNCION PARA NUEVO ATAQUE AQUI
+            pass
         return True
     print("Perdiste")
     return False

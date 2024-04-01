@@ -65,6 +65,11 @@ class Pokeusuario(Trainer):
     def add_win(self):
         self.batallas_ganadas += 1
 
+    def check_for_new_move(self):
+        if self.batallas_ganadas % 3 == 0:
+            return True
+        return False
+
 #Objetos, para aumentar la vida, ataque, defensa
 class Objeto:
     def __init__(self, nombre, mod_vida=0, mod_ataque=1, mod_defensa=1):
