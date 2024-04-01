@@ -5,7 +5,13 @@ Este modulo esta dedicado a la creación de las clases mediante las cuales se va
 -> Creación de enemigos
 '''
 # Entrenador, clase que maneja a los pokemon, que maneja a las clases tipo y ataque
+#Usamos script para evitar excepciones de importación circular
+import sys, os
+actual_dir = os.path.dirname(os.path.abspath(__file__))
+principal_dir = os.path.join(actual_dir, '..')
+sys.path.append(principal_dir)
 
+from funtions.funciones import validation, int_validatión
 class Trainer:
     def __init__(self, nombre, pokemones = None, objetos = None, ubicacion = None):
         self.nombre = nombre
@@ -178,6 +184,24 @@ class Pokemon:
 
     def full_heal(self):
         self.ps_actuales = self.ps_max
+        
+    def lern_new_attack(self, attacks):
+        ataques = [atq for atq in attacks if(atq.get_type() in self.get_types())]
+        cc = 0
+        for i in attacks:
+            print(f'>{cc}. {i}')
+            cc += 1
+        elec = validation(int_validatión('Escriba el número del ataque que desea aprender: '), 1, len(ataques))
+        if len(self.ataques) < 6:
+            self.ataques.append(ataques[elec])
+        else:
+            tt = 0
+            for i in self.ataques:
+                print(f'>{tt}. {i}')
+                tt += 1
+            elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
+            del self.ataques[elec2]
+            self.ataques.append(ataques[elec])
 
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.nombre}'

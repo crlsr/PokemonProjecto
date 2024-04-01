@@ -1,6 +1,12 @@
+#Usamos script para evitar excepciones de importación circular
+import sys, os
+actual_dir = os.path.dirname(os.path.abspath(__file__))
+principal_dir = os.path.join(actual_dir, '..')
+sys.path.append(principal_dir)
+
 from Class.pokeclases import Pokemon, Trainer, Ataque, Objeto, Type, Lucha, Normal, Volador, Veneno, Tierra, Roca, Bicho, Fantasma, Acero, Fuego, Agua, Planta, Electrico, Psiquico, Hielo, Dragon, Siniestro, Pokeusuario
 import random
-#To-Do función combate
+from Initializers.first_time_load import atq_creator, atq_class_asig
 
 def get_STAB(Pokemon, Attack_type):
     for type in Pokemon.tipos:
@@ -169,7 +175,13 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
         print("Ganaste!")
         Player_Trainer.add_win()
         if Player_Trainer.check_for_new_move() is True:
-            #AGREGAR FUNCION PARA NUEVO ATAQUE AQUI
+            Player_Trainer.pokemons[0].batallas_ganadas += 1
+            if Player_Trainer.pokemons[0].batallas_ganadas%3 == 0:
+                attacks = []
+                tipos = [Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno]
+                atq_creator(attacks)
+                atq_class_asig(attacks, tipos)
+                Player_Trainer.pokemons[0].lern_new_attack(Player_Trainer.pokemons[0], attacks)
             pass
         return True
     print("Perdiste")
