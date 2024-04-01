@@ -26,14 +26,14 @@ def Metromon():
     user = None
     user2 = None
     general_db_load(ataques, pokemons, rutas, pueblos, entrenadores)
+    load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
+    randomizers(pokemons, ataques, pueblos)
     try: user_load(user)
     except IndexError: pass
     poke_liga(pueblos, pokemons)
     while True: #Menú de cargado
-        elec = validation(int_validatión('Bienvenido a Metromon!\n>1. Iniciar nueva aventura\n>2. Cargar Aventura\n>3. Salir'), 1, 3)
+        elec = validation(int_validatión('Bienvenido a Metromon!\n>1. Iniciar nueva aventura\n>2. Cargar Aventura\n>3. Salir\n>>> '), 1, 3)
         if elec == 1:
-            load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
-            randomizers(pokemons, ataques, pueblos)
             create_user(user)
             x = input('Elija el nombre de su poke compañero: ')
             user2 = Pokecompañero(x)
@@ -48,6 +48,8 @@ def Metromon():
                 load_user_pokes(pokemons, user)
                 get_objects(user)
                 break
+        else:
+            return 'Vuelva pronto'
     
     posicion = user.final_position #Posición absoluta del perosnaje
     while True: #Juego
@@ -115,7 +117,9 @@ def Metromon():
     #Update de la base de datos:
     db_updater(ataques, pokemons, rutas, pueblos, entrenadores, user)
     
-Metromon()
+x = Metromon()
+print(x)
+
     
     
     

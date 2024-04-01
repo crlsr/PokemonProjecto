@@ -275,7 +275,9 @@ def load_data(ataques, tipos, pokemons, rutas, pueblos, trainers):
 def randomizers(pokemons, ataques, pueblos):
     atq_randomizer(pokemons, ataques)
     poke_random(pueblos, pokemons)
-    
+
+
+
 
 
 
