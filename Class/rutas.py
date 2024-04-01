@@ -55,17 +55,19 @@ class PokePueblos:
         self.pokeshop: object = pokeshop
     def show(self): #Historia del pueblo
         if self.name == 'Naranja':
-            pass
+            print('Pueblo naranja es un maravilloso pueblo el cual se enfoca en la pesca ya que vive\nse encuentra en la zona pesquera, este posee uno de los\nmejores gimnasios para iniciarse como entrenador pokemon.')
         elif self.name == 'Azul':
-            pass
+            print('Pueblo Azul es el pueblo de las olas donde se gozan de las mejores marras para surfear y de las mejores piscinas para nadar\nSu gimnasio de tipo agua puede ser complicado pero con habilidad se puede superar')
         elif self.name == 'Rojo':
-            pass
+            print('Pueblo Rojo se encuentra en lo alto de una montaña donde predomina la lava y el calor\n Su gimnasio de tipo fuego es desafiante pero muy entretenido')
         elif self.name == 'Negro':
-            pass
+            print('Pueblo Negro el pueblo de los fantasmas, ubicado en un cementerio, el pueblo negro se destaca por ser el \npueblo más espeluznante de todos, el gimnasio es terrorificamente complicado')
         elif self.name == 'Fuxia':
-            pass
+            print('Pueblo Fuxia más peligroso y con mayor tasa de criminalidad, se destaca por los maleantes que recorren sus calles.\nLos peores criminales tomaron el gimnasio, estos te esperan para que los enfrentes')
+        elif self.name == 'Plata':
+            print('El pueblo plateado es el pueblo de las maquinas, todos los reconocidos herreros han salido de aquií, o en el gimnasio\n esperando un digno rival')
         elif self.name == 'Liga_Pokemon':
-            pass
+            print('La liga pokemon es la liga donde los mejores entrenadores se enfrentan para ver quien es el mejor, el que logre ganarle al alto mando se corona como nuevo campeon pokemon\n He de aclarar que es extremadamente dificil')
     def menu_pub(self, user, posicion):
         while True:
             elec = validation(int_validatión('>1. Preguntarle a tu compañero por la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Retroceder Ruta\n>6. Avanzar Ruta\n>7. Salir\n>>>'), 1, 7)
