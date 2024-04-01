@@ -29,14 +29,14 @@ class PokeRutas:
     def __repr__(self):
         return f'Ruta {self.nro}'
     
-    def menu_ruta(self, user, zonas, posicion):
+    def menu_ruta(self, user, posicion):
         while True:
             num = randint(0, len(self.entrenadores))-1
             if num == -1:
                 print('No hay batalla')
             else:
                 Pokemon_Combat(user, self.entrenadores[num])
-            elec = validation(int_validatión(f'>1. Avanzar a {zonas[posicion+1]}\n>2. Retroceder a {zonas[posicion-1]}\n>3. Salir de Pokemon\n>>>'))
+            elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'))
             if elec == 1:
                 return posicion+1
             elif elec == 2:
@@ -75,7 +75,7 @@ class PokePueblos:
             elif elec == 2:
                 self.medcenter.menu(self.medcenter, user)
             elif elec == 3:
-                self.pokeshop.menu(self.pokeshop, user, 3)
+                self.pokeshop.menu(self.pokeshop, user)
             elif elec == 4:
                 boolean = self.gym.menu(self.gym, user)
                 if boolean == False:
@@ -162,7 +162,7 @@ class PokeGym:
             elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
             os.system('clear') 
             if elec == 1:
-                if len(self.entrenadores) > 0:
+                if not self.pueblo in user.gimnasios:
                     boolean = Pokemon_Combat(user, self.entrenadores[0])
                     if boolean == True:
                         del self.entrenadores
@@ -173,6 +173,9 @@ class PokeGym:
                     else:
                         print('Será llevado al centro Pokemon de la ciudad')
                         return boolean
+                else:
+                    print('No puedes luchar en este gym, ya que ya lo completaste...')
+                    break
             else:
                 break   
         

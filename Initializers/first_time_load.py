@@ -8,10 +8,13 @@ actual_dir = os.path.dirname(os.path.abspath(__file__))
 principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
-from Combate import Pokemon_Combat
 #Importamos las clases necesarias para la contruccion de nuestros objetos
 from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
+
+from Combate import Pokemon_Combat
+
+from funtions.funciones import validation, int_validatión
 
 from Class.pokeclases import Pokeusuario, Objeto
 
@@ -226,33 +229,55 @@ def poke_liga(pueblos, pokemons):
     liga.gym.entrenadores[3].pokemons = [pokemons[74], pokemons[66], pokemons[66], pokemons[11], pokemons[9], pokemons[20]]
         
 
+#Eleccion de inicio:
+def seleccion_inicial(user, pokecompañero, pokemons):
+    iniciales = [pokemons[0], pokemons[5], pokemons[10]]
+    cc = 0
+    for i in iniciales:
+        print(f'>{cc}. {i.nombre} Tipo: {i.tipos}')
+        cc += 1
+    elec = validation(int_validatión('Escriba el número del pokemon que desea como inicial: '), 1, 3)
+    user.pokemons.append(iniciales[elec-1])
+    if elec == 1: #Charizard
+        pokecompañero.pokemons.append(iniciales[2])
+    elif elec == 2: #Blastoise
+        pokecompañero.pokemons.append(iniciales[3])
+    else: #Venusaur
+        pokecompañero.pokemons.append(iniciales[1])
+    print(f'{pokecompañero.nombre}: Ahora que ya tenemos nuestros pokemones, vamos a pelear!')
+    boolean = Pokemon_Combat(user, pokecompañero)
+    if boolean == True:
+        print(f'{pokecompañero.nombre}: Me haz ganado, eso significa que estas listo para el gimnasio de tipo normal de pueblo Naranja')
+    else:
+        print(f'{pokecompañero.nombre}: Mejor surte para la proxima socio, intenra más suerte en el gimnasio de pueblo Naranja, es el más sencillo de todos.')
+        for i in user.pokemons:
+            i.ps_actuales = i.ps_max
+    
+    
 
 '''
-Ejecución del programa
+Ejecución del programa (paquetes ejecutables)
 '''
-array = []
-array2 = []
-arrayr = []
-array3 = []
-array4 = []
-atq_creator(array2)
-poke_creator(array)
-ruta_creator(arrayr)
-pubs_creator(array3)
-trainers_creator(array4)
+def general_db_load(ataques, pokemons, rutas, pueblos, trainers):
+    atq_creator(ataques)
+    poke_creator(pokemons)
+    ruta_creator(rutas)
+    pubs_creator(pueblos)
+    trainers_creator(trainers)
 
-atq_class_asig(array2, tipos)
-pokes_type_asig(array, tipos)
-rute_pokes_asig(arrayr, array)
-trainer_pub(array4, array3)
-trainer_obj(array4)
+def load_data(ataques, tipos, pokemons, rutas, pueblos, trainers):
+    atq_class_asig(ataques, tipos)
+    pokes_type_asig(pokemons, tipos)
+    rute_pokes_asig(rutas, pokemons)
+    trainer_pub(trainers, pueblos)
+    trainer_obj(trainers)
 
-atq_randomizer(array, array2)
-poke_random(array3, array)
-poke_liga(array3, array)
+def randomizers(pokemons, ataques, pueblos):
+    atq_randomizer(pokemons, ataques)
+    poke_random(pueblos, pokemons)
+    
 
-for i in array:
-    print(i.ataques)
+
 
 
 

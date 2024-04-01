@@ -51,7 +51,7 @@ class Trainer:
 
 #Usuario Pokemon
 class Pokeusuario(Trainer):
-    def __init__(self, nombre, genero, region_dor, pokemons = None, gimnasios = None, liga = False, objects = None , pokecoins = 0):
+    def __init__(self, nombre, genero, region_dor, pokemons = None, gimnasios = None, liga = False, objects = None , pokecoins = 0, final_position = None):
         super().__init__(nombre, pokemons, objects)
         self.genero = genero
         self.region_dor = region_dor
@@ -61,6 +61,9 @@ class Pokeusuario(Trainer):
         self.liga = liga
         self.pokecoins = pokecoins
         self.batallas_ganadas = 0
+        if final_position is None:
+            final_position = 0
+        self.final_position = final_position
 
     def add_win(self):
         self.batallas_ganadas += 1
@@ -69,6 +72,12 @@ class Pokeusuario(Trainer):
         if self.batallas_ganadas % 3 == 0:
             return True
         return False
+    
+    def get_medallas(self):
+        array = []
+        for i in self.gimnasios:
+            array.append(i)
+        return array
 
 #Objetos, para aumentar la vida, ataque, defensa
 class Objeto:
