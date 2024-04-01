@@ -29,13 +29,13 @@ class PokeRutas:
     def __repr__(self):
         return f'Ruta {self.nro}'
     
-    def menu_ruta(self, user, posicion):
+    def menu_ruta(self, user, posicion, ataques):
         while True:
             num = randint(0, len(self.entrenadores))-1
             if num == -1:
                 print('No hay batalla')
             else:
-                Pokemon_Combat(user, self.entrenadores[num])
+                Pokemon_Combat(user, self.entrenadores[num], ataques)
             elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'))
             if elec == 1:
                 return posicion+1
@@ -68,7 +68,7 @@ class PokePueblos:
             print('El pueblo plateado es el pueblo de las maquinas, todos los reconocidos herreros han salido de aquií, o en el gimnasio\n esperando un digno rival')
         elif self.name == 'Liga_Pokemon':
             print('La liga pokemon es la liga donde los mejores entrenadores se enfrentan para ver quien es el mejor, el que logre ganarle al alto mando se corona como nuevo campeon pokemon\n He de aclarar que es extremadamente dificil')
-    def menu_pub(self, user, posicion):
+    def menu_pub(self, user, posicion, ataques):
         while True:
             elec = validation(int_validatión('>1. Preguntarle a tu compañero por la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Retroceder Ruta\n>6. Avanzar Ruta\n>7. Salir\n>>>'), 1, 7)
             os.system('clear') 
@@ -79,7 +79,7 @@ class PokePueblos:
             elif elec == 3:
                 self.pokeshop.menu(self.pokeshop, user)
             elif elec == 4:
-                boolean = self.gym.menu(self.gym, user)
+                boolean = self.gym.menu(self.gym, user, ataques)
                 if boolean == False:
                     for i in user.pokemons:
                         i.ps_actuales = i.ps_max
@@ -159,13 +159,13 @@ class PokeGym:
             entrenadores = []
         self.entrenadores = entrenadores
         
-    def menu(self, user):
+    def menu(self, user, ataques):
         while True:
             elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
             os.system('clear') 
             if elec == 1:
                 if not self.pueblo in user.gimnasios:
-                    boolean = Pokemon_Combat(user, self.entrenadores[0])
+                    boolean = Pokemon_Combat(user, self.entrenadores[0], ataques)
                     if boolean == True:
                         del self.entrenadores
                         print('Entrenador derrotad, haz ganado 1200 Pokemonedas')

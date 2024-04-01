@@ -230,7 +230,7 @@ def poke_liga(pueblos, pokemons):
         
 
 #Eleccion de inicio:
-def seleccion_inicial(user, pokecompañero, pokemons):
+def seleccion_inicial(user, pokecompañero, pokemons, ataques):
     iniciales = [pokemons[0], pokemons[5], pokemons[10]]
     cc = 0
     for i in iniciales:
@@ -245,7 +245,7 @@ def seleccion_inicial(user, pokecompañero, pokemons):
     else: #Venusaur
         pokecompañero.pokemons.append(iniciales[1])
     print(f'{pokecompañero.nombre}: Ahora que ya tenemos nuestros pokemones, vamos a pelear!')
-    boolean = Pokemon_Combat(user, pokecompañero)
+    boolean = Pokemon_Combat(user, pokecompañero, ataques)
     if boolean == True:
         print(f'{pokecompañero.nombre}: Me haz ganado, eso significa que estas listo para el gimnasio de tipo normal de pueblo Naranja')
     else:
