@@ -75,13 +75,13 @@ class PokePueblos:
             if elec == 1:
                 self.show()
             elif elec == 2:
-                self.medcenter.menu(self.medcenter, user)
+                self.medcenter.menu(user)
             elif elec == 3:
-                self.pokeshop.menu(self.pokeshop, user)
+                self.pokeshop.menu(user)
             elif elec == 4:
-                boolean = self.gym.menu(self.gym, user, ataques)
+                boolean = self.gym.menu(user, ataques)
                 if boolean == False:
-                    for i in user.pokemons:
+                    for i in user.pokemones:
                         i.ps_actuales = i.ps_max
                     print('Listo, sus pokemones se han recuperado exitosamente...💪🏻')
             elif elec == 5:
@@ -143,7 +143,7 @@ class PokeMed:
             elec = validation(int_validatión('>1. Curar pokemones\n>2. Salir'), 1, 2)
             os.system('clear')
             if elec == 1:
-                for i in user.pokemons:
+                for i in user.pokemones:
                     i.ps_actuales = i.ps_max
                 print('Listo, sus pokemones se han recuperado exitosamente...💪🏻')
             else:
@@ -167,7 +167,7 @@ class PokeGym:
                 if not self.pueblo in user.gimnasios:
                     boolean = Pokemon_Combat(user, self.entrenadores[0], ataques)
                     if boolean == True:
-                        del self.entrenadores
+                        del self.entrenadores[0]
                         print('Entrenador derrotad, haz ganado 1200 Pokemonedas')
                         user.pokecoins += 1200
                         if len(self.entrenadores) == 0:

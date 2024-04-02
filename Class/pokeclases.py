@@ -186,6 +186,7 @@ class Pokemon:
         self.ps_actuales = self.ps_max
         
     def lern_new_attack(self, attacks):
+        ## REVISAR
         ataques = [atq for atq in attacks if(atq.get_type() in self.get_types())]
         cc = 0
         for i in attacks:

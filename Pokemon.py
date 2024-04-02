@@ -54,61 +54,61 @@ def Metromon():
     posicion = user.final_position #Posición absoluta del perosnaje
     while True: #Juego
         if posicion == 0:
-            moment_position = pueblos[0].menu(user, posicion, ataques)
+            moment_position = pueblos[0].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 1:
-            moment_position = rutas[0].menu(user, ataques)
+            moment_position = rutas[0].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 2:
-            moment_position = rutas[1].menu(user, ataques)
+            moment_position = rutas[1].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 3:
-            moment_position = pueblos[1].menu(user, ataques)
+            moment_position = pueblos[1].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 4:
-            moment_position = rutas[2].menu(user, ataques)
+            moment_position = rutas[2].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 5:
-            moment_position = rutas[3].menu(user, ataques)
+            moment_position = rutas[3].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 6:
-            moment_position = pueblos[2].menu(user, ataques)
+            moment_position = pueblos[2].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 7:
-            moment_position = rutas[4].menu(user, ataques)
+            moment_position = rutas[4].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 8:
-            moment_position = rutas[5].menu(user, ataques)
+            moment_position = rutas[5].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 9:
-            moment_position = pueblos[3].menu(user, ataques)
+            moment_position = pueblos[3].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 10:
-            moment_position = rutas[6].menu(user, ataques)
+            moment_position = rutas[6].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 11:
-            moment_position = rutas[7].menu(user, ataques)
+            moment_position = rutas[7].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 12:
-            moment_position = pueblos[4].menu(user, ataques)
+            moment_position = pueblos[4].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 13:
-            moment_position = rutas[8].menu(user, ataques)
+            moment_position = rutas[8].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 14:
-            moment_position = rutas[9].menu(user, ataques)
+            moment_position = rutas[9].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 15:
-            moment_position = pueblos[5].menu(user, ataques)
+            moment_position = pueblos[5].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 16:
-            moment_position = rutas[10].menu(user, ataques)
+            moment_position = rutas[10].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 17:
-            moment_position = rutas[11].menu(user, ataques)
+            moment_position = rutas[11].menu_ruta(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 18:
-            moment_position = pueblos[6].menu(user, ataques)
+            moment_position = pueblos[6].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == -1:
             user.final_position = moment_position

@@ -168,7 +168,7 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
         print("Ganaste!")
         Player_Trainer.add_win()
         if Player_Trainer.check_for_new_move() is True:
-            Player_Trainer.pokemons[0].lern_new_attack(Player_Trainer.pokemons[0], attacks)
+            Player_Trainer.pokemones[0].lern_new_attack(attacks)
         return True
     print("Perdiste")
     return False

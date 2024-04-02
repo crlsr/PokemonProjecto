@@ -239,18 +239,18 @@ def seleccion_inicial(user, pokecompañero, pokemons, ataques):
     elec = validation(int_validatión('Escriba el número del pokemon que desea como inicial: '), 1, 3)
     user.pokemones.append(iniciales[elec-1])
     if elec == 1: #Charizard
-        pokecompañero.pokemons.append(iniciales[2])
+        pokecompañero.pokemones.append(iniciales[2])
     elif elec == 2: #Blastoise
-        pokecompañero.pokemons.append(iniciales[3])
+        pokecompañero.pokemones.append(iniciales[3])
     else: #Venusaur
-        pokecompañero.pokemons.append(iniciales[1])
+        pokecompañero.pokemones.append(iniciales[1])
     print(f'{pokecompañero.nombre}: Ahora que ya tenemos nuestros pokemones, vamos a pelear!')
     boolean = Pokemon_Combat(user, pokecompañero, ataques)
     if boolean == True:
         print(f'{pokecompañero.nombre}: Me haz ganado, eso significa que estas listo para el gimnasio de tipo normal de pueblo Naranja')
     else:
-        print(f'{pokecompañero.nombre}: Mejor surte para la proxima socio, intenra más suerte en el gimnasio de pueblo Naranja, es el más sencillo de todos.')
-        for i in user.pokemons:
+        print(f'{pokecompañero.nombre}: Mejor suerte para la proxima socio, intenra más suerte en el gimnasio de pueblo Naranja, es el más sencillo de todos.')
+        for i in user.pokemones:
             i.ps_actuales = i.ps_max
     
     
