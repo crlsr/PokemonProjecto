@@ -28,13 +28,13 @@ def Metromon():
     general_db_load(ataques, pokemons, rutas, pueblos, entrenadores)
     load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
     randomizers(pokemons, ataques, pueblos)
-    try: user_load(user)
+    try: user = user_load(user)
     except IndexError: pass
     poke_liga(pueblos, pokemons)
     while True: #Menú de cargado
         elec = validation(int_validatión('Bienvenido a Metromon!\n>1. Iniciar nueva aventura\n>2. Cargar Aventura\n>3. Salir\n>>> '), 1, 3)
         if elec == 1:
-            create_user(user)
+            user = create_user(user)
             x = input('Elija el nombre de su poke compañero: ')
             user2 = Pokecompañero(x)
             print('Perfecto, ahora realizaremos tu combate inicial con tu pokecompañero')

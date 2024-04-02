@@ -232,12 +232,12 @@ def poke_liga(pueblos, pokemons):
 #Eleccion de inicio:
 def seleccion_inicial(user, pokecompañero, pokemons, ataques):
     iniciales = [pokemons[0], pokemons[5], pokemons[10]]
-    cc = 0
+    cc = 1
     for i in iniciales:
         print(f'>{cc}. {i.nombre} Tipo: {i.tipos}')
         cc += 1
     elec = validation(int_validatión('Escriba el número del pokemon que desea como inicial: '), 1, 3)
-    user.pokemons.append(iniciales[elec-1])
+    user.pokemones.append(iniciales[elec-1])
     if elec == 1: #Charizard
         pokecompañero.pokemons.append(iniciales[2])
     elif elec == 2: #Blastoise
