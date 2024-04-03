@@ -29,6 +29,13 @@ class PokeRutas:
     def __repr__(self):
         return f'Ruta {self.nro}'
     
+    def get_trainers(self):
+        array = []
+        for i in self.entrenadores:
+            y = i.nombre.split('Salvaje')
+            array.append(y[0])
+        return array
+    
     def menu_ruta(self, user, posicion, ataques):
         while True:
             num = randint(0, len(self.entrenadores))-1
@@ -36,7 +43,7 @@ class PokeRutas:
                 print('No hay batalla')
             else:
                 Pokemon_Combat(user, self.entrenadores[num], ataques)
-            elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'))
+            elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'), 1, 3)
             if elec == 1:
                 return posicion+1
             elif elec == 2:
@@ -70,6 +77,7 @@ class PokePueblos:
             print('La liga pokemon es la liga donde los mejores entrenadores se enfrentan para ver quien es el mejor, el que logre ganarle al alto mando se corona como nuevo campeon pokemon\n He de aclarar que es extremadamente dificil')
     def menu_pub(self, user, posicion, ataques):
         while True:
+            print(f'\nBienvenid@ a Pueblo {self.name}')
             elec = validation(int_validatión('>1. Preguntarle a tu compañero por la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Retroceder Ruta\n>6. Avanzar Ruta\n>7. Salir\n>>>'), 1, 7)
             os.system('clear') 
             if elec == 1:

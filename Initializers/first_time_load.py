@@ -55,7 +55,9 @@ def ruta_creator(rutas):
         for i in data:
             array = i.split(';')
             del array[-1]
-            x = PokeRutas(array[0], array[1])
+            print(array[0])
+            pokes = eval(array[0])
+            x = PokeRutas(pokes, array[1])
             rutas.append(x)
 
 
@@ -140,8 +142,8 @@ def pokes_type_asig(pokes, tipos):
 def rute_pokes_asig(rutas, pokes):
     for i in rutas:
         cc = 0
-        for j in i.entrenadores:
-            for poke in pokes:
+        for poke in pokes:
+            for j in i.entrenadores:
                 if poke.nombre == j:
                     i.entrenadores[cc] = Trainer(f'{j} Salvaje', [poke], None, i.nro)
                     cc += 1
@@ -239,17 +241,17 @@ def seleccion_inicial(user, pokecompañero, pokemons, ataques):
     elec = validation(int_validatión('Escriba el número del pokemon que desea como inicial: '), 1, 3)
     user.pokemones.append(iniciales[elec-1])
     if elec == 1: #Charizard
-        pokecompañero.pokemones.append(iniciales[2])
-    elif elec == 2: #Blastoise
-        pokecompañero.pokemones.append(iniciales[3])
-    else: #Venusaur
         pokecompañero.pokemones.append(iniciales[1])
+    elif elec == 2: #Blastoise
+        pokecompañero.pokemones.append(iniciales[2])
+    else: #Venusaur
+        pokecompañero.pokemones.append(iniciales[0])
     print(f'{pokecompañero.nombre}: Ahora que ya tenemos nuestros pokemones, vamos a pelear!')
     boolean = Pokemon_Combat(user, pokecompañero, ataques)
     if boolean == True:
         print(f'{pokecompañero.nombre}: Me haz ganado, eso significa que estas listo para el gimnasio de tipo normal de pueblo Naranja')
     else:
-        print(f'{pokecompañero.nombre}: Mejor suerte para la proxima socio, intenra más suerte en el gimnasio de pueblo Naranja, es el más sencillo de todos.')
+        print(f'{pokecompañero.nombre}: Mejor suerte para la proxima socio, intenta más suerte en el gimnasio de pueblo Naranja, es el más sencillo de todos.')
         for i in user.pokemones:
             i.ps_actuales = i.ps_max
     
@@ -275,6 +277,19 @@ def load_data(ataques, tipos, pokemons, rutas, pueblos, trainers):
 def randomizers(pokemons, ataques, pueblos):
     atq_randomizer(pokemons, ataques)
     poke_random(pueblos, pokemons)
+
+
+x = []
+x1 = []
+x2 = []
+x3 = []
+x4 = []
+
+general_db_load(x, x1, x2, x3, x4)
+load_data(x, tipos, x1, x2, x3, x4)
+randomizers(x1, x, x3)
+
+print(x2[0])
 
 
 

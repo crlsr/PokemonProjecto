@@ -17,7 +17,7 @@ def user_load(memory_user):
         pokes = eval(user[3])
         gyms = eval(user[4])
         objs = eval(user[6])
-        current_user = Pokeusuario(user[0], user[1], user[2], pokes, gyms, user[5], objs, int(user[7]), int(user[8]))
+        memory_user = Pokeusuario(user[0], user[1], user[2], pokes, gyms, user[5], objs, int(user[7]), int(user[8]))
   
 #Cargar pokemons del usuario      
 def load_user_pokes(pokes, user):

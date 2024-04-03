@@ -55,6 +55,7 @@ def Metromon():
     posicion = user.final_position #Posición absoluta del perosnaje
     while True: #Juego
         if posicion == 0:
+            print('Si desea salir también puede retroceder de zona')
             moment_position = pueblos[0].menu_pub(user, posicion, ataques)
             posicion = moment_position
         elif posicion == 1:
