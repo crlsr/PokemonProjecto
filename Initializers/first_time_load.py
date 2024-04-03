@@ -98,7 +98,7 @@ def create_user(user):
     print('Bienvenido a Pokemon!💻')
     name = input('Diga su nombre: ')
     gender = input('Diga su genero (el que usted desee): ')
-    region = input('Diga su region de origen: : ')
+    region = input('Diga su region de origen: ')
     user = Pokeusuario(name, gender, region)
     return user
 
@@ -234,7 +234,7 @@ def seleccion_inicial(user, pokecompañero, pokemons, ataques):
     iniciales = [pokemons[0], pokemons[5], pokemons[10]]
     cc = 1
     for i in iniciales:
-        print(f'>{cc}. {i.nombre} Tipo: {i.tipos}')
+        print(f'>{cc}. {i.nombre} Tipo: {i.tipos[0].show(i.tipos[0])}')
         cc += 1
     elec = validation(int_validatión('Escriba el número del pokemon que desea como inicial: '), 1, 3)
     user.pokemones.append(iniciales[elec-1])

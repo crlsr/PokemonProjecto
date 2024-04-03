@@ -140,7 +140,7 @@ class PokeMed:
         self.pueblo = pueblo
     def menu(self, user):
         while True:
-            elec = validation(int_validatión('>1. Curar pokemones\n>2. Salir'), 1, 2)
+            elec = validation(int_validatión('>1. Curar pokemones\n>2. Salir\n>>>'), 1, 2)
             os.system('clear')
             if elec == 1:
                 for i in user.pokemones:
@@ -161,7 +161,7 @@ class PokeGym:
         
     def menu(self, user, ataques):
         while True:
-            elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym'), 1, 2)
+            elec = validation(int_validatión('>1. Pelear contra el siguiente entrenador (o contra el primero)\n>2. Salir del gym\n>>>'), 1, 2)
             os.system('clear') 
             if elec == 1:
                 if not self.pueblo in user.gimnasios:

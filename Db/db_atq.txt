@@ -54,7 +54,7 @@ Surf;Agua;95;Especial;
 Viraje;Agua;60;Fisico;
 Cascada;Agua;110;Especial;
 Ascuas;Fuego;40;Fisico;
-Golpe Fuego;Fuego;75;Especial;
+Golpe Furgo;Fuego;75;Especial;
 Lanzallamas;Fuego;90;Especial;
 Fuego Sagrado;Fuego;110;Especial;
 Colmillo Igneo;Fuego;65;Fisico;
