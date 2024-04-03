@@ -49,7 +49,8 @@ def Metromon():
                 get_objects(user)
                 break
         else:
-            return 'Vuelva pronto'
+            print('Vuelva pronto')
+            return
     
     posicion = user.final_position #Posición absoluta del perosnaje
     while True: #Juego
@@ -117,8 +118,7 @@ def Metromon():
     #Update de la base de datos:
     db_updater(ataques, pokemons, rutas, pueblos, entrenadores, user)
     
-x = Metromon()
-print(x)
+Metromon()
 
     
     
