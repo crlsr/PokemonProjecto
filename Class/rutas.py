@@ -32,8 +32,7 @@ class PokeRutas:
     def get_trainers(self):
         array = []
         for i in self.entrenadores:
-            y = i.nombre.split('Salvaje')
-            array.append(y[0])
+            array.append(i.get_pokes()[0])
         return array
     
     def menu_ruta(self, user, posicion, ataques):

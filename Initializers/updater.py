@@ -2,6 +2,7 @@
 Este modulo tiene como finalidad realizar el proceso de óctualizacion de datos cada que cerremos la partida.
 '''
 
+'''
 def db_pokes_updater(pokes):
     with open('Db//db_poke.txt', 'w', encoding= 'UTF-8') as data:
         for i in pokes:
@@ -29,12 +30,13 @@ def db_rut_updater(rutas):
     with open('Db//db_rutas.txt', 'w', encoding= 'UTF-8') as data:
         for i in rutas:
             data.write(f'{i.get_trainers()};{i.nro};\n')
-            
+'''
+       
 def db_user_updater(user):
     with open('Db//db_user.txt', 'w', encoding= 'UTF-8') as data:
-        data.write(f'{user.nombre};{user.genero};{user.regiond_or};{user.get_pokes()};{user.get_medallas()};{user.liga};{user.get_objs()};{user.pokecoins};{user.final_position};\n')
+        data.write(f'{user.nombre};{user.genero};{user.region_dor};{user.get_pokes()};{user.get_medallas()};{user.liga};{user.objetos};{user.pokecoins};{user.final_position};\n')
 
-
+'''
 #Paquete de ejecución
 def db_updater(ataques, pokemons, rutas, pueblos, trainers, user):
     db_atq_updater(ataques)
@@ -43,3 +45,4 @@ def db_updater(ataques, pokemons, rutas, pueblos, trainers, user):
     db_pueblos_updater(pueblos)
     db_trainers_updater(trainers)
     db_user_updater(user)
+'''

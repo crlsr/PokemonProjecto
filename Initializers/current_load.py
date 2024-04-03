@@ -10,30 +10,29 @@ sys.path.append(principal_dir)
 from Class.pokeclases import Pokeusuario, Objeto
 
 #Cargando al usuario:
-def user_load(memory_user):
+def user_load():
     with open('Db//db_user.txt', 'r', encoding= 'UTF-8') as data:
         x = data.readline()
         user = x.split(';')
         pokes = eval(user[3])
         gyms = eval(user[4])
         objs = eval(user[6])
-        memory_user = Pokeusuario(user[0], user[1], user[2], pokes, gyms, user[5], objs, int(user[7]), int(user[8]))
+        return Pokeusuario(user[0], user[1], user[2], pokes, gyms, user[5], objs, int(user[7]), int(user[8]))
   
 #Cargar pokemons del usuario      
 def load_user_pokes(pokes, user):
-    for i in user.pokemons:
+    for i in user.pokemones:
         cc = 0
         for poke in pokes:
             if i == poke.nombre:
-                user.pokemons[cc] = poke
-            else:
-                continue
+                user.pokemones[cc] = poke
+        
             
 
 #Cargar los objetos del user
 def get_objects(user):
-    cc = len(user.objects)
-    user.objects = []
+    cc = len(user.objetos)
+    user.objetos = []
     for i in range(cc):
         x = Objeto('Pocion de vida', 50, 1, 1)
         user.objects.append(x)

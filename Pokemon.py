@@ -10,7 +10,7 @@ sys.path.append(principal_dir)
 
 from Initializers.first_time_load import general_db_load, load_data, randomizers, create_user, seleccion_inicial, poke_liga
 from Initializers.current_load import user_load, load_user_pokes, get_objects
-from Initializers.updater import db_updater
+from Initializers.updater import db_user_updater
 from funtions.funciones import validation, int_validatión
 from Class.pokeclases import Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno
 from Class.partner import Pokecompañero
@@ -25,10 +25,11 @@ def Metromon():
     entrenadores = []
     user = ''
     user2 = None
+    moment_position = None
     general_db_load(ataques, pokemons, rutas, pueblos, entrenadores)
     load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
     randomizers(pokemons, ataques, pueblos)
-    try: user = user_load(user)
+    try: user = user_load()
     except IndexError: pass
     poke_liga(pueblos, pokemons)
     while True: #Menú de cargado
@@ -41,7 +42,7 @@ def Metromon():
             seleccion_inicial(user, user2, pokemons, ataques)
             break
         elif elec == 2:
-            if len(user) == 0:
+            if len(user.nombre) == 0:
                 print('Error, no hay partidas guardadas')    
                 continue
             else:
@@ -56,68 +57,69 @@ def Metromon():
     while True: #Juego
         if posicion == 0:
             print('Si desea salir también puede retroceder de zona')
-            moment_position = pueblos[0].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[0].menu_pub(user, posicion, ataques)
         elif posicion == 1:
-            moment_position = rutas[0].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[0].menu_ruta(user, posicion, ataques)
         elif posicion == 2:
-            moment_position = rutas[1].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[1].menu_ruta(user, posicion, ataques)
         elif posicion == 3:
-            moment_position = pueblos[1].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[1].menu_pub(user, posicion, ataques)
         elif posicion == 4:
-            moment_position = rutas[2].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[2].menu_ruta(user, posicion, ataques)
         elif posicion == 5:
-            moment_position = rutas[3].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[3].menu_ruta(user, posicion, ataques)
         elif posicion == 6:
-            moment_position = pueblos[2].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[2].menu_pub(user, posicion, ataques)
         elif posicion == 7:
-            moment_position = rutas[4].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[4].menu_ruta(user, posicion, ataques)
         elif posicion == 8:
-            moment_position = rutas[5].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[5].menu_ruta(user, posicion, ataques)
         elif posicion == 9:
-            moment_position = pueblos[3].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[3].menu_pub(user, posicion, ataques)
         elif posicion == 10:
-            moment_position = rutas[6].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[6].menu_ruta(user, posicion, ataques)
         elif posicion == 11:
-            moment_position = rutas[7].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[7].menu_ruta(user, posicion, ataques)
         elif posicion == 12:
-            moment_position = pueblos[4].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[4].menu_pub(user, posicion, ataques)
         elif posicion == 13:
-            moment_position = rutas[8].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[8].menu_ruta(user, posicion, ataques)
         elif posicion == 14:
-            moment_position = rutas[9].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[9].menu_ruta(user, posicion, ataques)
         elif posicion == 15:
-            moment_position = pueblos[5].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[5].menu_pub(user, posicion, ataques)
         elif posicion == 16:
-            moment_position = rutas[10].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[10].menu_ruta(user, posicion, ataques)
         elif posicion == 17:
-            moment_position = rutas[11].menu_ruta(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = rutas[11].menu_ruta(user, posicion, ataques)
         elif posicion == 18:
-            moment_position = pueblos[6].menu_pub(user, posicion, ataques)
-            posicion = moment_position
+            moment_position = posicion
+            posicion = pueblos[6].menu_pub(user, posicion, ataques)
         elif posicion == -1:
             user.final_position = moment_position
             break
     
     #Update de la base de datos:
-    db_updater(ataques, pokemons, rutas, pueblos, entrenadores, user)
+    #db_updater(ataques, pokemons, rutas, pueblos, entrenadores, user)
+    db_user_updater(user)
     
 Metromon()
 
