@@ -1,4 +1,4 @@
-Naranja;None;None;None;pub;
+Naranja;;None;None;None;pub;
 Naranja;[];gym;
 Naranja;med;
 Naranja;0;0;0;shop;

@@ -55,7 +55,6 @@ def ruta_creator(rutas):
         for i in data:
             array = i.split(';')
             del array[-1]
-            print(array[0])
             pokes = eval(array[0])
             x = PokeRutas(pokes, array[1])
             rutas.append(x)
