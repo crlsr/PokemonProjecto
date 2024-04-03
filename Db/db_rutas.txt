@@ -1,0 +1,12 @@
+['Rattata', 'Tentacool', 'Shellder'];1;
+['Rattata', 'Tentacool', 'Shellder'];2;
+['Rattata', 'Ponyta', 'Magmar'];3;
+['Rattata', 'Ponyta', 'Magmar'];4;
+['Rattata', 'Mimikyu', 'Gasly'];5;
+['Rattata', 'Mimikyu', 'Gasly'];6;
+['Rattata', 'Poochyena', 'Houndour'];7;
+['Rattata', 'Poochyena', 'Houndour'];8;
+['Rattata', 'Beldum', 'Meltamn'];9;
+['Rattata', 'Beldum', 'Meltamn'];10;
+['Rattata', 'Nidoqueen', 'Tauros'];11;
+['Rattata', 'Nidoqueen', 'Tauros'];12;
