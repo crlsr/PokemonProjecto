@@ -23,7 +23,7 @@ def Metromon():
     pueblos = []
     rutas = []
     entrenadores = []
-    user = None
+    user = ''
     user2 = None
     general_db_load(ataques, pokemons, rutas, pueblos, entrenadores)
     load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
