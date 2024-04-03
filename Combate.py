@@ -32,7 +32,6 @@ def select_player_attack(Pokemon):
             if answer == 0:
                 return None
             elif answer <= len(possible_attacks):
-                print(possible_attacks[answer-1].get_type_object())
                 return possible_attacks[answer-1]
         except:
             print("Respuesta Invalida")
