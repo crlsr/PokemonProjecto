@@ -182,46 +182,52 @@ def poke_random(pueblos, pokemonsdf):
         for i in entrenadores:
             if i.ubicacion == 'Naranja': #Tipo Normal
                 clase = [poke for poke in pokemons if (Normal in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<2:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<2:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             elif i.ubicacion == 'Azul': #Tipo Agua
                 clase = [poke for poke in pokemons if (Agua in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<3:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<3:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             elif i.ubicacion == 'Rojo': #Tipo Fuego
                 clase = [poke for poke in pokemons if (Fuego in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<4:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<4:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             elif i.ubicacion == 'Negro': #Tipo Fantasma
                 clase = [poke for poke in pokemons if (Fantasma in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<5:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<5:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             elif i.ubicacion == 'Fuxia': #Tipo Siniestro
                 clase = [poke for poke in pokemons if (Siniestro in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<5:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<5:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             elif i.ubicacion == 'Plata': #Tipo Acero
                 clase = [poke for poke in pokemons if (Acero in poke.tipos)]
-                for poke in clase:
-                    if randint(1,3) == 1 and len(i.pokemones)<6:
-                        i.pokemones.append(poke)
-                    else:
-                        continue
+                while len(i.pokemones) <= 0:
+                    for poke in clase:
+                        if randint(1,3) == 1 and len(i.pokemones)<6:
+                            i.pokemones.append(poke)
+                        else:
+                            continue
             else:
                 continue
 #Esta función tiene como fin darle los pokemonsa los entrenadores de la liga.

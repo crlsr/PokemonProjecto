@@ -1,1 +1,0 @@
-1;nujer;guarico;['Venusaur'];['Bomba Lodo', 'Bomba Acida', 'Trueno', 'Fuego Sagrado', 'Pistola Agua', 'Psiquico'];['Naranja', 'Azul'];False;['Ataque X', 'Defensa X', 'Poción de curación', 'Ataque X', 'Poción de curación', 'Ataque X', 'Poción de curación', 'Defensa X', 'Ataque X'];3200;9;

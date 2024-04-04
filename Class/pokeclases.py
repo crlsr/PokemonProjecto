@@ -209,7 +209,7 @@ class Pokemon:
                 print(f'>{tt}. {i}')
                 tt += 1
             elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
-            del self.ataques[elec2]
+            del self.ataques[elec2-1]
             self.ataques.append(usable_attacks[elec-1])
 
     
