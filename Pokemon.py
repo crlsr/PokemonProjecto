@@ -26,11 +26,12 @@ def Metromon():
     user = ''
     user2 = None
     moment_position = None
+    value = True
     general_db_load(ataques, pokemons, rutas, pueblos, entrenadores)
     load_data(ataques, tipos, pokemons, rutas, pueblos, entrenadores)
     randomizers(pokemons, ataques, pueblos)
-    try: user = user_load()
-    except IndexError: pass
+    try: user = user_load(ataques, pokemons)
+    except IndexError: value = False
     poke_liga(pueblos, pokemons)
     while True: #Menú de cargado
         elec = validation(int_validatión('Bienvenido a Metromon!\n>1. Iniciar nueva aventura\n>2. Cargar Aventura\n>3. Salir\n>>> '), 1, 3)
@@ -42,11 +43,10 @@ def Metromon():
             seleccion_inicial(user, user2, pokemons, ataques)
             break
         elif elec == 2:
-            if len(user.nombre) == 0:
+            if value == False:
                 print('Error, no hay partidas guardadas')    
                 continue
             else:
-                load_user_pokes(pokemons, user)
                 get_objects(user)
                 break
         else:

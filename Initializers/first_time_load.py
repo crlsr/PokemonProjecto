@@ -278,17 +278,7 @@ def randomizers(pokemons, ataques, pueblos):
     poke_random(pueblos, pokemons)
 
 
-x = []
-x1 = []
-x2 = []
-x3 = []
-x4 = []
 
-general_db_load(x, x1, x2, x3, x4)
-load_data(x, tipos, x1, x2, x3, x4)
-randomizers(x1, x, x3)
-
-print(type(x2[3].entrenadores[2].pokemones[0]))
 
 
 

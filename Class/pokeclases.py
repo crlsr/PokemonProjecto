@@ -207,6 +207,12 @@ class Pokemon:
             elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
             del self.ataques[elec2-1]
             self.ataques.append(attacks[elec])
+    
+    def get_ataques(self):
+        array = []
+        for i in self.ataques:
+            array.append(i.name)
+        return array
 
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.nombre}'
