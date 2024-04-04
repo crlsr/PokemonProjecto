@@ -42,7 +42,10 @@ class PokeRutas:
                 print('No hay batalla')
             else:
                 self.entrenadores[num].pokemones[0].full_heal()
-                Pokemon_Combat(user, self.entrenadores[num], ataques)
+                boolean = Pokemon_Combat(user, self.entrenadores[num], ataques)
+                if boolean == False:
+                    user.pokemones.full_heal()
+                    print('Un pokemedico que estaba de camino en la ruta, ha curado a tu pokemon...🚑')
             print(f'Ruta {self.nro}')
             print(f'Pokemons: {user.pokemones}')
             elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'), 1, 3)
@@ -158,7 +161,7 @@ class PokeMed:
             os.system('clear')
             if elec == 1:
                 for i in user.pokemones:
-                    i.ps_actuales = i.ps_max
+                    i.full_heal()
                 print('Listo, sus pokemones se han recuperado exitosamente...💪🏻')
             else:
                 print('Ok, vuelva pronto...👍🏻')

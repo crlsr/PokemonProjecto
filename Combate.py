@@ -122,7 +122,7 @@ def Pokemon_Combat(Player_Trainer, Enemy_Trainer, attacks):
     print("Combate versus {}!".format(Enemy_Trainer.get_name()))
     while Player_Trainer.get_available_pokemon() > 0 and Enemy_Trainer.get_available_pokemon() > 0:
         print("""Tu pokémon: {}, {}/{} ps
-Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pkmn_user.Get_ps(), current_pkmn_user.Get_ps_max(), current_pkmn_enemy.get_name(), current_pkmn_enemy.Get_ps(), current_pkmn_enemy.Get_ps_max()))
+Pokemon enemigo: {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pkmn_user.Get_ps(), current_pkmn_user.Get_ps_max(), current_pkmn_enemy.get_name(), current_pkmn_enemy.Get_ps(), current_pkmn_enemy.Get_ps_max()))
         current_attack = None
         current_item = None
         while True:

@@ -297,5 +297,4 @@ general_db_load(x, x1, x2, x3, x4)
 load_data(x, tipos, x1, x2, x3, x4)
 randomizers(x1, x, x3)
 
-print(x3[3].gym.entrenadores[0].pokemones)
 
