@@ -194,7 +194,6 @@ class Pokemon:
     def lern_new_attack(self, attacks):
         usable_attacks = attacks[:]
         for attack in self.ataques:
-            usable_attacks.remove(attack)
             if attack in usable_attacks:
                 usable_attacks.remove(attack)
         cc = 0
