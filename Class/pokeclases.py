@@ -192,13 +192,16 @@ class Pokemon:
         self.ps_actuales = self.ps_max
         
     def lern_new_attack(self, attacks):
+        usable_attacks = attacks
+        for attack in self.ataques:
+            usable_attacks.remove(attack)
         cc = 0
-        for i in attacks:
+        for i in usable_attacks:
             print(f'>{cc}. {i}')
             cc += 1
-        elec = validation(int_validatión('Escriba el número del ataque que desea aprender: '), 1, len(attacks))
+        elec = validation(int_validatión('Escriba el número del ataque que desea aprender: '), 1, len(usable_attacks))
         if len(self.ataques) < 6:
-            self.ataques.append(attacks[elec])
+            self.ataques.append(usable_attacks[elec])
         else:
             tt = 0
             for i in self.ataques:
@@ -206,7 +209,7 @@ class Pokemon:
                 tt += 1
             elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
             del self.ataques[elec2-1]
-            self.ataques.append(attacks[elec])
+            self.ataques.append(usable_attacks[elec])
 
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.nombre}'
