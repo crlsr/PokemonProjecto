@@ -1,1 +1,1 @@
-2;2;2;['Blastoise'];['Acua Jet', 'Cascada', 'Acua Jet', 'Pistola Agua', 'Viraje', 'Golpe Bala'];[];False;[];0;6;
+1;nujer;guarico;['Venusaur'];['Bomba Lodo', 'Rayo', 'Bomba Acida', 'Trueno'];['Naranja'];False;['Ataque X', 'Defensa X'];5300;3;

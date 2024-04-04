@@ -24,13 +24,14 @@ def user_load(attacks, pokemons):
             for poke in pokemons:
                 if i == poke.nombre:
                     pokes[cc] = poke
-        
+        pokes[0].ataques.clear()
         #Cargado de los ataques del pokemon del user     
         for i in atq: 
-            cc = 0
             for ataque in attacks:
                 if ataque.name == i:
                     pokes[0].ataques.append(ataque)
+                else:
+                    pass
                     
     
         gyms = eval(user[5])

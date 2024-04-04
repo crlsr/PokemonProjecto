@@ -66,7 +66,7 @@ class PokePueblos:
         if self.name == 'Naranja':
             print('Pueblo naranja es un maravilloso pueblo el cual se enfoca en la pesca ya que vive\nse encuentra en la zona pesquera, este posee uno de los\nmejores gimnasios para iniciarse como entrenador pokemon.')
         elif self.name == 'Azul':
-            print('Pueblo Azul es el pueblo de las olas donde se gozan de las mejores marras para surfear y de las mejores piscinas para nadar\nSu gimnasio de tipo agua puede ser complicado pero con habilidad se puede superar')
+            print('Pueblo Azul es el pueblo de las olas donde se gozan de los mejores mares para surfear y de las mejores piscinas para nadar\nSu gimnasio de tipo agua puede ser complicado pero con habilidad se puede superar')
         elif self.name == 'Rojo':
             print('Pueblo Rojo se encuentra en lo alto de una montaña donde predomina la lava y el calor\n Su gimnasio de tipo fuego es desafiante pero muy entretenido')
         elif self.name == 'Negro':
