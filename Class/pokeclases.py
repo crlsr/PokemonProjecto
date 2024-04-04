@@ -218,10 +218,7 @@ class Pokemon:
         for i in self.ataques:
             array.append(i.name)
         return array
-=======
-            del self.ataques[elec2]
-            self.ataques.append(usable_attacks[elec])
->>>>>>> bfb0bb5abd09224ae29879780a3b31586f689175
+
 
     def __repr__(self): #Representación del objeto pokemon dentro de un sistema de datos como array. Retorna un str
         return f'{self.nombre}'
@@ -230,7 +227,6 @@ class Pokemon:
         return f'{self.nombre}'
 
 #Ataque
-    
 class Ataque:
     def __init__(self, name, type = None, damage = None, damage_type = None):
         self.name = name
