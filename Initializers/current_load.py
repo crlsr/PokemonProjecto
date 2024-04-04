@@ -29,7 +29,6 @@ def user_load(attacks, pokemons):
         for i in atq: 
             cc = 0
             for ataque in attacks:
-                print(ataque.name == i)
                 if ataque.name == i:
                     pokes[0].ataques.append(ataque)
                     

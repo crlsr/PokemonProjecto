@@ -1,1 +1,1 @@
-2;2;2;['Blastoise'];['Acua Jet', 'Pistola Agua', 'Viraje'];[];False;[];0;0;
+2;2;2;['Blastoise'];['Acua Jet', 'Cascada', 'Acua Jet', 'Pistola Agua', 'Viraje', 'Golpe Bala'];[];False;[];0;6;

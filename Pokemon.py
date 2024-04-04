@@ -9,7 +9,7 @@ principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
 from Initializers.first_time_load import general_db_load, load_data, randomizers, create_user, seleccion_inicial, poke_liga
-from Initializers.current_load import user_load, load_user_pokes, get_objects
+from Initializers.current_load import user_load, get_objects
 from Initializers.updater import db_user_updater
 from funtions.funciones import validation, int_validatión
 from Class.pokeclases import Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno
