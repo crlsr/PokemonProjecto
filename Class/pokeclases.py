@@ -84,6 +84,12 @@ class Pokeusuario(Trainer):
         for i in self.gimnasios:
             array.append(i)
         return array
+    
+    def get_objetos(self):
+        array = []
+        for i in self.objetos:
+            array.append(i.nombre)
+        return array
 
 #Objetos, para aumentar la vida, ataque, defensa
 class Objeto:

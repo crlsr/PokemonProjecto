@@ -34,7 +34,7 @@ def db_rut_updater(rutas):
        
 def db_user_updater(user):
     with open('Db//db_user.txt', 'w', encoding= 'UTF-8') as data:
-        data.write(f'{user.nombre};{user.genero};{user.region_dor};{user.get_pokes()};{user.get_medallas()};{user.liga};{user.objetos};{user.pokecoins};{user.final_position};\n')
+        data.write(f'{user.nombre};{user.genero};{user.region_dor};{user.get_pokes()};{user.get_medallas()};{user.liga};{user.get_objetos()};{user.pokecoins};{user.final_position};\n')
 
 '''
 #Paquete de ejecución

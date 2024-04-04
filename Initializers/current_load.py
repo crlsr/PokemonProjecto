@@ -31,9 +31,19 @@ def load_user_pokes(pokes, user):
 
 #Cargar los objetos del user
 def get_objects(user):
-    cc = len(user.objetos)
-    user.objetos = []
-    for i in range(cc):
-        x = Objeto('Pocion de vida', 50, 1, 1)
-        user.objects.append(x)
+    cc = 0
+    for i in user.objetos:
+        if i == 'Poción de curación':
+            x = Objeto('Poción de curación', 50, 1, 1)
+            user.objetos[cc] = x
+            cc += 1
+        elif i == 'Defensa X':
+            x = Objeto("Defensa X", 0, 1, 10)
+            user.objetos[cc] = x
+            cc += 1
+        else:
+            x = Objeto("Ataque X", 0, 15, 1)
+            user.objetos[cc] = x
+            cc += 1
+            
         

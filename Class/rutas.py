@@ -116,26 +116,27 @@ class PokeShop:
         
     def menu(self, user):
         self.curaciones.append(Objeto('Poción de curación', 45, 1, 1))
-        self.curaciones.append(Objeto("Defensa X", 0, 1, 2))
-        self.curaciones.append(Objeto("Ataque X", 0, 2, 1))
+        self.curaciones.append(Objeto("Defensa X", 0, 1, 10))
+        self.curaciones.append(Objeto("Ataque X", 0, 15, 1))
         while True:
             print(f'Pokecoins: {user.pokecoins}')
+            print(f'Objetos: {user.get_objetos()}')
             elec = validation(int_validatión('Que deseas comprar?\n>1. Curación: 1200\n>2. Posción de defensa: 900\n>3. Poción de ataque: 1000\n>4. Salir\n>>>'), 1, 4)
             os.system('clear')
             if elec == 1:
-                if user.pokecoins > 1200:
+                if user.pokecoins >= 1200:
                     user.pokecoins -= 1200
                     user.objetos.append(self.curaciones[0])
                 else:
                     print('Saldo insuficiente...👎🏻')
             elif elec == 2:
-                if user.pokecoins > 900:
+                if user.pokecoins >= 900:
                     user.pokecoins -= 900
                     user.objetos.append(self.curaciones[1])
                 else:
                     print('Saldo insuficiente...👎🏻')
             elif elec == 3:
-                if user.pokecoins > 1000:
+                if user.pokecoins >= 1000:
                     user.pokecoins -= 1000
                     user.objetos.append(self.curaciones[2])
                 else:

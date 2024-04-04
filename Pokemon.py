@@ -53,7 +53,7 @@ def Metromon():
             print('Vuelva pronto')
             return
     
-    posicion = user.final_position #Posición absoluta del perosnaje
+    posicion = user.final_position #Posición absoluta del personaje desde la cual va a reaparecer
     while True: #Juego
         if posicion == 0:
             print('Si desea salir también puede retroceder de zona')
