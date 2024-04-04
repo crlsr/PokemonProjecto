@@ -41,6 +41,7 @@ class PokeRutas:
             if num == -1:
                 print('No hay batalla')
             else:
+                self.entrenadores[num].pokemones[0].full_heal()
                 Pokemon_Combat(user, self.entrenadores[num], ataques)
             print(f'Ruta {self.nro}')
             print(f'Pokemons: {user.pokemones}')
