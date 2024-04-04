@@ -141,8 +141,8 @@ def pokes_type_asig(pokes, tipos):
 def rute_pokes_asig(rutas, pokes):
     for i in rutas:
         cc = 0
-        for poke in pokes:
-            for j in i.entrenadores:
+        for j in i.entrenadores:
+            for poke in pokes:
                 if poke.nombre == j:
                     i.entrenadores[cc] = Trainer(f'{j} Salvaje', [poke], None, i.nro)
                     cc += 1
@@ -288,7 +288,7 @@ general_db_load(x, x1, x2, x3, x4)
 load_data(x, tipos, x1, x2, x3, x4)
 randomizers(x1, x, x3)
 
-print(x2[0])
+print(type(x2[0].entrenadores[2]))
 
 
 
