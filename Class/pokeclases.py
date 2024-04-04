@@ -196,21 +196,21 @@ class Pokemon:
         for attack in self.ataques:
             if attack in usable_attacks:
                 usable_attacks.remove(attack)
-        cc = 0
+        cc = 1
         for i in usable_attacks:
             print(f'>{cc}. {i}')
             cc += 1
         elec = validation(int_validatión('Escriba el número del ataque que desea aprender: '), 1, len(usable_attacks))
         if len(self.ataques) < 6:
-            self.ataques.append(usable_attacks[elec])
+            self.ataques.append(usable_attacks[elec-1])
         else:
-            tt = 0
+            tt = 1
             for i in self.ataques:
                 print(f'>{tt}. {i}')
                 tt += 1
             elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
             del self.ataques[elec2]
-            self.ataques.append(usable_attacks[elec])
+            self.ataques.append(usable_attacks[elec-1])
 
     
     def get_ataques(self):
