@@ -185,7 +185,7 @@ class PokeGym:
                     boolean = Pokemon_Combat(user, self.entrenadores[0], ataques)
                     if boolean == True:
                         del self.entrenadores[0]
-                        print('Entrenador derrotad, haz ganado 1200 Pokemonedas')
+                        print('Entrenador@ derrotad@, haz ganado 1200 Pokemonedas')
                         user.pokecoins += 1200
                         if len(self.entrenadores) == 0:
                             user.gimnasios.append(self.pueblo)
