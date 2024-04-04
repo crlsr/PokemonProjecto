@@ -42,6 +42,8 @@ class PokeRutas:
                 print('No hay batalla')
             else:
                 Pokemon_Combat(user, self.entrenadores[num], ataques)
+            print(f'Ruta {self.nro}')
+            print(f'Pokemons: {user.pokemones}')
             elec = validation(int_validatión(f'>1. Avanzar a la siguiente zona \n>2. Retroceder a zona anterior\n>3. Salir de Pokemon\n>>>'), 1, 3)
             if elec == 1:
                 return posicion+1
@@ -77,6 +79,8 @@ class PokePueblos:
     def menu_pub(self, user, posicion, ataques):
         while True:
             print(f'\nBienvenid@ a Pueblo {self.name}')
+            print(f'Pokemons: {user.pokemones}')
+            print(f'Pokecoins: {user.pokecoins}')
             elec = validation(int_validatión('>1. Preguntarle a tu compañero por la historia del pueblo\n>2. Ir al MedCenter\n>3. Ir a la PokeTienda\n>4. Ir al gym\n>5. Retroceder Ruta\n>6. Avanzar Ruta\n>7. Salir\n>>>'), 1, 7)
             os.system('clear') 
             if elec == 1:
@@ -115,6 +119,7 @@ class PokeShop:
         self.curaciones.append(Objeto("Defensa X", 0, 1, 2))
         self.curaciones.append(Objeto("Ataque X", 0, 2, 1))
         while True:
+            print(f'Pokecoins: {user.pokecoins}')
             elec = validation(int_validatión('Que deseas comprar?\n>1. Curación: 1200\n>2. Posción de defensa: 900\n>3. Poción de ataque: 1000\n>4. Salir\n>>>'), 1, 4)
             os.system('clear')
             if elec == 1:
