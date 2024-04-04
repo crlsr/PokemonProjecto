@@ -120,19 +120,19 @@ class PokeShop:
             if elec == 1:
                 if user.pokecoins > 1200:
                     user.pokecoins -= 1200
-                    user.objects.append(self.curaciones[0])
+                    user.objetos.append(self.curaciones[0])
                 else:
                     print('Saldo insuficiente...👎🏻')
             elif elec == 2:
                 if user.pokecoins > 900:
                     user.pokecoins -= 900
-                    user.objects.append(self.curaciones[1])
+                    user.objetos.append(self.curaciones[1])
                 else:
                     print('Saldo insuficiente...👎🏻')
             elif elec == 3:
                 if user.pokecoins > 1000:
                     user.pokecoins -= 1000
-                    user.objects.append(self.curaciones[2])
+                    user.objetos.append(self.curaciones[2])
                 else:
                     print('Saldo insuficiente...👎🏻')
             
