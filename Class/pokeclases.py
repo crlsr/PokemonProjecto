@@ -198,7 +198,7 @@ class Pokemon:
             cc += 1
         elec = validation(int_validatión('Escriba el número del ataque que desea aprender: '), 1, len(attacks))
         if len(self.ataques) < 6:
-            self.ataques.append(attacks[elec-1])
+            self.ataques.append(attacks[elec])
         else:
             tt = 0
             for i in self.ataques:
