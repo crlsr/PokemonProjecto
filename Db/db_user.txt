@@ -1,0 +1,1 @@
+2;2;2;['Blastoise'];['Acua Jet', 'Pistola Agua', 'Viraje'];[];False;[];0;0;

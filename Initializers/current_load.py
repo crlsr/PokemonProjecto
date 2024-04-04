@@ -8,13 +8,7 @@ principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
 from Class.pokeclases import Pokeusuario, Objeto
-#Cargar pokemons del usuario      
-def load_user_pokes(pokes, user):
-    for i in user.pokemones:
-        cc = 0
-        for poke in pokes:
-            if i == poke.nombre:
-                user.pokemones[cc] = poke
+
                 
 #Cargando al usuario:
 def user_load(attacks, pokemons):
@@ -23,33 +17,27 @@ def user_load(attacks, pokemons):
         user = x.split(';')
         pokes = eval(user[3])
         atq = eval(user[4])
+        
+        #Cargado de pokemons del user
         for i in pokes:
             cc = 0
             for poke in pokemons:
                 if i == poke.nombre:
                     pokes[cc] = poke
-        for i in atq:
+        
+        #Cargado de los ataques del pokemon del user     
+        for i in atq: 
             cc = 0
             for ataque in attacks:
-                if i == ataque.name:
-                    atq[cc] = ataque
-                    cc += 1
-        pokes[0].ataques = atq
+                print(ataque.name == i)
+                if ataque.name == i:
+                    pokes[0].ataques.append(ataque)
+                    
+    
         gyms = eval(user[5])
         objs = eval(user[7])
         memory_user = Pokeusuario(user[0], user[1], user[2], pokes, gyms, user[6], objs, int(user[8]), int(user[9]))
-        #load_user_pokes(pokemons, memory_user)
-        '''
-        y = eval(user[4])
-        for i in y:
-            cc = 0
-            for j in attacks:
-                if i == j.name:
-                    y[cc] = j
-                    cc += 1
-        
-        memory_user.pokemones[0].ataques = y
-        '''
+        #Retornamos al usuario 
         return memory_user
         
            
