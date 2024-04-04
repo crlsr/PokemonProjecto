@@ -172,4 +172,5 @@ Pokemon enemigo: {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
             Player_Trainer.pokemones[0].lern_new_attack(attacks)
         return True
     print("Perdiste")
+    current_pkmn_enemy.full_heal()
     return False
