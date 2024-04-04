@@ -8,6 +8,7 @@ actual_dir = os.path.dirname(os.path.abspath(__file__))
 principal_dir = os.path.join(actual_dir, '..')
 sys.path.append(principal_dir)
 
+
 #Importamos las clases necesarias para la contruccion de nuestros objetos
 from Class.pokeclases import Pokemon, Fuego, Agua, Planta, Electrico, Psiquico, Siniestro, Fantasma, Lucha, Volador, Bicho, Roca, Normal, Hielo, Dragon, Acero, Veneno, Ataque, Trainer
 Ataque
@@ -173,7 +174,9 @@ def trainer_pub(trainer, pueblos):
                 continue
                 
 #Función para darle a cada entrenador un pokemon random
-def poke_random(pueblos, pokemons):
+def poke_random(pueblos, pokemonsdf):
+    idx = [0, 5, 10]
+    pokemons = [elemento for indice, elemento in enumerate(pokemonsdf) if indice not in idx]
     for pueblo in pueblos:
         entrenadores = pueblo.gym.entrenadores
         for i in entrenadores:
@@ -278,12 +281,15 @@ def randomizers(pokemons, ataques, pueblos):
     poke_random(pueblos, pokemons)
 
 
+x = []
+x1 = []
+x2 = []
+x3 = []
+x4 = []
 
+general_db_load(x, x1, x2, x3, x4)
+load_data(x, tipos, x1, x2, x3, x4)
+randomizers(x1, x, x3)
 
-
-
-
-
-
-
+print(x3[3].gym.entrenadores[0].pokemones)
 
