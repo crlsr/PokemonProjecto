@@ -194,6 +194,7 @@ class Pokemon:
     def lern_new_attack(self, attacks):
         usable_attacks = attacks[:]
         for attack in self.ataques:
+            usable_attacks.remove(attack)
             if attack in usable_attacks:
                 usable_attacks.remove(attack)
         cc = 0
@@ -209,9 +210,9 @@ class Pokemon:
                 print(f'>{tt}. {i}')
                 tt += 1
             elec2 = validation(int_validatión('Escriba el número del ataque con el cual deseas sutituir tu nuevo ataque: '), 1, 6)
-<<<<<<< HEAD
-            del self.ataques[elec2-1]
-            self.ataques.append(attacks[elec])
+            del self.ataques[elec2]
+            self.ataques.append(usable_attacks[elec])
+
     
     def get_ataques(self):
         array = []
