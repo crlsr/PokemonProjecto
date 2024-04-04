@@ -165,6 +165,8 @@ Pokemon enemigo; {}, {}/{} ps""".format(current_pkmn_user.get_name(), current_pk
     Player_Trainer.reset_stats_pkmn()
     if Player_Trainer.get_available_pokemon() > 0:
         print("Ganaste!")
+        for pokemon in Enemy_Trainer.pokemones:
+            pokemon.full_heal()
         Player_Trainer.add_win()
         if Player_Trainer.check_for_new_move() is True:
             Player_Trainer.pokemones[0].lern_new_attack(attacks)
